@@ -46,5 +46,12 @@ Double.random(in: 1.5...4.3)
 Float.random(in: -0.5...1.5)
 
 ///Character
-///
+let alphabetA: Character = "A"
+print(alphabetA)
+
+let 한글변수이름: Character = "ㄱ"
+print("한글의 첫 자음: \(한글변수이름)")
+
+///String
+
 
