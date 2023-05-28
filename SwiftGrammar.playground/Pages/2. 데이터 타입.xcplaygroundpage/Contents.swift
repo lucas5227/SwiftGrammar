@@ -1,5 +1,7 @@
+"""
 /// Int8, Int16, Int32, Int64 +-정수
 /// UInt8, UInt16, UInt32, UInt64 +정수
+"""
 var integer: Int = -100
 let unsignedInteger: UInt = 50
 print("intenger value: \(integer), unsignedInger: \(unsignedInteger)")
@@ -20,8 +22,9 @@ let decimalInteger: Int = 28
 let binaryInteger: Int = 0b11100
 let octalInteger: Int = 0o34
 let hexadecimalIntger: Int = 0x1c
-
+"""
 ///Bool
+"""
 var boolean: Bool = true
 boolean.toggle()    // true - false 변경
 let iLoveYou: Bool = true
@@ -45,13 +48,33 @@ UInt.random(in: 1...30)
 Double.random(in: 1.5...4.3)
 Float.random(in: -0.5...1.5)
 
+"""
 ///Character
+"""
 let alphabetA: Character = "A"
 print(alphabetA)
 
 let 한글변수이름: Character = "ㄱ"
 print("한글의 첫 자음: \(한글변수이름)")
-
+"""
 ///String
+"""
+// 상수로선언된문자열은변경이불가능합니다.
+let name: String = "lucas"
+// 이니셜라이저를사용하여빈문자열을생성할수있습니다.
+// var 키워드를사용하여 변수를생성했으므로 문자열의 수정및 변경이가능합니다.
+var introduce: String = String()
+//append() 메서드를사용하여문자열을이어붙일수있습니다.
+introduce.append("제 이름은")
+// +연산자를통해서도문자열을이어붙일수있습니다.1
+introduce = introduce+" "+name+"입니다."
+print(introduce)
+
+// name에해당하는문자의수를셀수있습니다.
+print("name의 글자수: \(name.count)")
+// 빈문자열인지확인해볼수있습니다.
+print( "introduce가비어있습니까?: \(introduce .isEmpty)")
+// 유니코드의스칼라값을사용하면값에해당하는표현이출력됩니다- 어떤모양이출력되나요?
+let unicodescalarValue: String = "\u{2665}" //--> ♥
 
 
