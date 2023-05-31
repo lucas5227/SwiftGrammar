@@ -3,7 +3,6 @@
     <pages>
         <page name='1. 주석 변수 상수'/>
         <page name='2. 데이터 타입'/>
-        <page name='micro'/>
         <page name='2-1 Int'/>
     </pages>
 </playground>
