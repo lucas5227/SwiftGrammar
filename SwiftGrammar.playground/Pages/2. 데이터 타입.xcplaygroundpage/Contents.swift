@@ -78,3 +78,77 @@ print( "introduce가비어있습니까?: \(introduce .isEmpty)")
 let unicodescalarValue: String = "\u{2665}" //--> ♥
 
 
+// 연산자를 통한 문자열 결합
+let hello: String = "Hello"
+let lucas: String = "lucas"
+var greeting: String = hello + " " + lucas + "!"
+print(greeting)
+
+// 연산자를통한문자열비교
+var isSameString: Bool = false
+
+isSameString = hello == "Hello"
+print(isSameString) //true
+
+isSameString = hello == "hello"
+print(isSameString) //false
+
+// 메서드를 통한 접두어, 저미어 확인
+var hasPrefix: Bool = false
+hasPrefix = hello.hasPrefix("He")
+print(hasPrefix) //true
+
+hasPrefix = lucas.hasPrefix("cas")
+print(hasPrefix) //false
+
+hasPrefix = hello.hasPrefix("Hello")
+print(hasPrefix) //true
+
+var hasSuffix: Bool = false
+hasSuffix = hello.hasSuffix("He")
+print(hasSuffix) //false
+
+hasSuffix = hello.hasSuffix("llo")
+print(hasSuffix) //true
+
+hasPrefix = greeting.hasSuffix("lucas")
+print(hasSuffix) //false
+
+hasPrefix = greeting.hasSuffix("lucas!")
+print(hasSuffix) //true
+
+// 메소드를 통한 대소문자 변환
+var covertedString: String = ""
+covertedString = hello.uppercased()
+print(covertedString) //HELLO
+
+covertedString = greeting.uppercased()
+print(covertedString) //HELLO LUCAS!
+
+covertedString = greeting.lowercased()
+print(covertedString) //hello lucas!
+
+//프로퍼티를 통한 빈 문자열 확인
+var isEmptyString: Bool = false
+isEmptyString = greeting.isEmpty
+print(isEmptyString) //false
+
+greeting = "안녕"
+isEmptyString = greeting.isEmpty
+print(isEmptyString) //false
+
+greeting = ""
+isEmptyString = greeting.isEmpty
+print(isEmptyString) //true
+
+// 프로퍼티를 이용한 문자열길이확인
+greeting = "안녕하세요"
+print(greeting.count) //5
+
+// 코드상에서여러줄의문자열을직접쓰고싶다면큰따옴표세개를사용하면됩니다.
+// 큰따옴표세개를써주고한줄을내려써야합니다.
+// 마지막줄도큰따옴표세개는한줄내려써야합니다.
+greeting = """
+안녕하세요 저는 \(lucas)입니다. Swift 잘 하고 싶어요!
+잘 부탁합니다!
+"""
