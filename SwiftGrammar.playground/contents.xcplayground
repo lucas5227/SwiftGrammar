@@ -4,5 +4,10 @@
         <page name='1. 주석 변수 상수'/>
         <page name='2. 데이터 타입'/>
         <page name='2-1 Int'/>
+        <page name='2-2 Bool'/>
+        <page name='2-3 Charecter&amp;String'/>
+        <page name='2-4 Any, AnyObject&amp;nil'/>
+        <page name='3. 데이터 타입 고급'/>
+        <page name='micro'/>
     </pages>
 </playground>
