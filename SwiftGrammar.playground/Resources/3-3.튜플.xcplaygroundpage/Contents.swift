@@ -24,6 +24,6 @@ print( "이름:\(typePerson.0), 나이:\(typePerson.1), 신장:\(typePerson.2)")
 // 타입별칭의 적용
 typealias PersonTuple = (name:String, age:Int, height:Double)
 let lucas: PersonTuple = ("lucas", 99, 178.2)
-let neo: PersonTuple = ("neo", 15, 183.5)
+let eric: PersonTuple = ("eric", 15, 183.5)
 print("이름:\(lucas.name), 나이:\(lucas.age), 신장:\(lucas.height)")
-print("이름:\(neo.name), 나이:\(neo.age), 신장:\(neo.height)")
+print("이름:\(eric.name), 나이:\(eric.age), 신장:\(eric.height)")

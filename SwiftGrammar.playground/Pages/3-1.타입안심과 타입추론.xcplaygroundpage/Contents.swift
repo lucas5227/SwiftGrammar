@@ -2,5 +2,3 @@
 var name: String = "lucas"
 
 //name = 10 //err
-
-
