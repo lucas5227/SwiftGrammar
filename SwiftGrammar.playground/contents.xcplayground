@@ -2,19 +2,22 @@
 <playground version='6.0' target-platform='ios' buildActiveScheme='true' importAppTypes='true'>
     <pages>
         <page name='micro'/>
-        <page name='1. 주석 변수 상수'/>
-        <page name='2 데이터 타입'/>
-        <page name='2-1 Int'/>
         <page name='2-2 Bool'/>
         <page name='2-3 Charecter&amp;String'/>
         <page name='2-4 Any, AnyObject&amp;nil'/>
         <page name='3 데이터 타입 고급'/>
-        <page name='3-1.타입안심과 타입추론'/>
-        <page name='3-2.타입별칭'/>
-        <page name='3-3.튜플'/>
-        <page name='3-4-1.컬렉션_배열'/>
-        <page name='3-4-2.컬렉션_딕셔너리'/>
-        <page name='3-4-3.컬렉션_세트'/>
-        <page name='3-5-1 열거형_기본'/>
+        <page name='1 주석 변수 상수'/>
+        <page name='2 데이터 타입'/>
+        <page name='2-1 Int'/>
+        <page name='3-1 타입안심과 타입추론'/>
+        <page name='3-2 타입별칭'/>
+        <page name='3-3 튜플'/>
+        <page name='3-4-1 컬렉션_배열'/>
+        <page name='3-4-2 컬렉션_딕셔너리'/>
+        <page name='3-4-3 컬렉션_세트'/>
+        <page name='3-5-1 열거형_기본'/>
+        <page name='3-5-2 열거형_원시값'/>
+        <page name='3-5-3 열거형_연관값'/>
+        <page name='3-5-4 열거형_항목순회'/>
     </pages>
 </playground>
