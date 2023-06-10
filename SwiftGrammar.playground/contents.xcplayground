@@ -5,10 +5,10 @@
         <page name='2-2 Bool'/>
         <page name='2-3 Charecter&amp;String'/>
         <page name='2-4 Any, AnyObject&amp;nil'/>
-        <page name='3 데이터 타입 고급'/>
+        <page name='2-1 Int'/>
         <page name='1 주석 변수 상수'/>
         <page name='2 데이터 타입'/>
-        <page name='2-1 Int'/>
+        <page name='3 데이터 타입 고급'/>
         <page name='3-1 타입안심과 타입추론'/>
         <page name='3-2 타입별칭'/>
         <page name='3-3 튜플'/>
@@ -19,5 +19,7 @@
         <page name='3-5-2 열거형_원시값'/>
         <page name='3-5-3 열거형_연관값'/>
         <page name='3-5-4 열거형_항목순회'/>
+        <page name='3-5-5 열거형_순환 열거형'/>
+        <page name='4-1 연산자-종류'/>
     </pages>
 </playground>
