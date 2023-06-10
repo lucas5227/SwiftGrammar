@@ -14,14 +14,14 @@ infix operator ?? : NilCoalescingPrecedence
 infix operator ^= : AssignmentPrecedence
 infix operator == : ComparisonPrecedence
 infix operator >>= : AssignmentPrecedence
-infix operator != : ComparisonPrecedence
+infix operator |= : ComparisonPrecedence
 infix operator ..< : RangeFormationPrecedence
 infix operator << : BitwiseShiftPrecedence
 infix operator >> : BitwiseShiftPrecedence
 infix operator || : LogicalConjunctionPrecedence
 infix operator <: ComparisonPrecedence
 infix operator <<= : AssignmentPrecedence
-infix operator %= : AssionmentPrecedence
+infix operator %= : AssignmentPrecedence
 infix operator += : AssignmentPrecedence
 infix operator *= : AssignmentPrecedence
 infix operator -> : DefaultPrecedence
