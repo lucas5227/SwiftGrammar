@@ -33,4 +33,5 @@ prefix func ** (value: String) -> String {
 
 let resultString: String = **"lucas"
 
-print(resultString) //
+print(resultString) //lucas lucas
+
