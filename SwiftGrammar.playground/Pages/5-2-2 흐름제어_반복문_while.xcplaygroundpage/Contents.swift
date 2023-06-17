@@ -1,7 +1,7 @@
 """
 ///흐름제어_반볻문_while
 """
-///whille 반복구문의사용
+///whille 반복구문의 사용
 var names: [String] = ["lucas", "Neo", "Trinity"]
 
 while names.isEmpty == false {
