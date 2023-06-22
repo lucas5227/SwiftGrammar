@@ -6,4 +6,4 @@ typealias MoveFunc = (Int) -> Int
 
 func goRgiht(_ currentPosition: Int) ->Int {
     return currentPosition + 1
-)
+}
