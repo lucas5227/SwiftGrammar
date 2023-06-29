@@ -2,7 +2,7 @@
 ///구조체 struct
 """
 /*
- struct 구토체 이름 {
+ struct 구조체 이름 {
  픠로퍼티와 메서드들
  */
 ///Basiclnformation 구조체 정의
