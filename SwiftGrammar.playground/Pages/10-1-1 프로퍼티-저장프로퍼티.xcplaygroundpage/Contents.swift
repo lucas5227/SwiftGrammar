@@ -1,89 +1,19 @@
 """
-///프로퍼티-저장 프로퍼티
+///프로퍼티-지연 저장프로퍼티
 """
 /*
- 프로퍼티는 인스턴스의 변수 또는 상수를 의미한다.
- 프로퍼티의 값이 변하는 것을 감시하는 프로퍼티 감시지도 있다. 프로퍼티 감시자는 프로퍼티의 값이 변할때 값의 변화에 따른 특정작업을 실행합니다. 프로퍼티 감시자는 저장프로퍼티에 적용할수 있으며 부모클래스로부터 상속 받을수 있습니다.
+ 인스턴스를 생성할때 프로퍼티에 값이 필요없다면 프로퍼티를 옵셔널로 선언해줄수 있습니다. 그런데 그것과는 조금 다른용도로 필요할때 값이 할당되는 지연 지장프로퍼티가 있습니다. 지연 저장프로퍼티는 호출이 있어야 값을 초기화하며, 이때 lazy키워드를 사용합니다.
+ 상수는 인스턴스가 완전히 생성되기 전에 초기화 해야하므로 필요할때 값을 할당하는 지연 저장 프로퍼티와는 맞지않는다. 따라서 지연 저장 프로퍼 티 는 var 키워드를 사용하여 변수로 정의합니다.
+  지역 저장 츠로퍼티는 주로 복잡한 클래스나 구조체를 구현할때 많이 사용된다. 클래스 인스턴스의 저장 프로퍼티로 다른 클래스 인스턴스나 구조체 인스턴스를 할당해야 할 때가 있다. 이럴 때 인스턴스를 초기화하면서 저장 프로퍼티로 다른 클래스 인스턴스나 구조체 인스턴스를 할당해야 할 때가 있습니다. 이럴 때 인스턴스를 초기화 하면서 저장 프로퍼치로 쓰이는 인스턴스들이 ㅅ함 전에 생성되어야 한다면? 또, 굳이 모든 저장 프로퍼티를 사용할 필요가 없다면? 이 질문의 닶이 지연 저장 프로퍼티 사용입니다. 지연 저장 프로퍼티를 잘 사용하면 불필요한 성능저하나 공간 낭비를 줄일 수 있다.
  */
-
-/*
- 저장 프로퍼티
- 
- 클래스 또는 구조체의 인스턴스와 연관된 값을 저장하는 가장 단순한 개념의 프로퍼티입니다. 저장 프로퍼티는 var 키워드를 사용하면 변수 저장프로퍼티 Let 키워드를 사용하면 상수 저장 프로퍼티가 된다.
- 저장 프로퍼티를 정의할때 프로퍼티 기본값*과 초깃값을 지정해줄 수 있다
- */
-
-///저장 프로퍼티의 선언 및 인스턴스 생성
-//좌표
-
+///지연 저장프로쩌티
 struct CoordinatePoint {
-    var x: Int          //저장 프로퍼티
-    var y: Int          //저장 프로퍼티
+    var x: Int = 0
+    var y: Int = 0
 }
 
-//구조페에는 기본적으로 저장 프로퍼티를 매개변수로 갖는 이니셜라이저가 있다.
-let lucasPoint: CoordinatePoint  = CoordinatePoint(x: 10, y: 5)
-
-//사람의 위치 정보
 class Position {
-    var point: CoordinatePoint
-    //저장 츠로퍼티(변수) - dnlcl(point)는 변경될 수 없을을 뜻합니다.
-    let name: String            //저장프로퍼티 (상수)
-    
-    //프로퍼티 기본값을 지정해주지 않는다면 이니셜라이저를 따로 정의해주어야 합니다.
-    init(name: String, currentPoint: CoordinatePoint) {
-        self.name = name
-        self.point = currentPoint
-    }
-}
-
-//사용자 정의 이니셜라이저를 호출해야만 한다.
-//그렇지 않으면 프로퍼티 초깃값을 할당할 수 없기 때문에 인스턴스 생성이 불가능하다.
-let lucasPosition: Position = Position(name: "lucas", currentPoint: lucasPoint)
-
-///저장 프로퍼티의 초깃값 지정
-//좌표
-struct CoordinatePoint2 {
-    var x: Int = 0          //저장 프로퍼티
-    var y: Int = 0          //저장 프로퍼티
-}
-
-//프로퍼티의 토깃값을 할당했다면 굳이 전달인자로 초깃값을 넘길 필요가 없습니다.
-let lucasPoint2: CoordinatePoint2  = CoordinatePoint2()
-
-//물론 기존에 초깃값을 할당할 수 있ㅁ는 이니셜라이저도 사용 가능하다.
-let neoPoint: CoordinatePoint2 = CoordinatePoint2(x:10, y:5)
-
-print("lucas's point : \(lucasPoint2.x), \(lucasPoint2.y)")
-//lucas's point : 0, 0
-
-print("neo's point : \(neoPoint.x), \(neoPoint.y)")
-//neo's point : 10, 5
- 
-//사람의 위치 정보
-class Position2 {
-    var point:  CoordinatePoint2 = CoordinatePoint2()       //저장프로퍼티 (상수)
-    var name: String = "Unknown"                    //저장프로퍼티 (상수)
-}
-
-//초기값을 지정해줬다면 사용자 정의 이니셜라이저를 사용하지 않아도 된다.
-let lucasPosition2: Position2 = Position2()
-
-lucasPosition2.point = lucasPoint2
-lucasPosition2.name = "lucas"
-
-///옵셔널저장프로퍼티
-//좌표
-struct CoordinatePoint3 {
-    //위치는 x, y 갑ㅈㅅ이 모드 있어야 하므로 옵셔널이면 안된다.
-    var x: Int
-    var y: Int
-}
-
-//tkfkadml dnlcl wjdqh
-class Position3 {
-    //현재 사람의 위치를 모를 수도 있다. -> 옵셔널
-    var point: CoordinatePoint3?
+    lazy var point: CoordinatePoint = CoordinatePoint()
     let name: String
     
     init(name: String) {
@@ -91,8 +21,13 @@ class Position3 {
     }
 }
 
-//이름은 필수지만 위티는 모를 수 있다.
-let lucasPosition3 : Position3 = Position3(name: "lucas")
+let lucasPosition: Position  = Position(name: "lucas")
 
-//위티를 알게되면 그 때 위치 값을 할당해준다.
-lucasPosition3.point = CoordinatePoint3(x: 20, y: 10)
+//이 코드를 통해 point 프로퍼티로 처음 접근할 떄
+//point 프로퍼티의 CoordinatePoint가 생성된다.
+print(lucasPosition.point) //x: 0, y: 0
+
+/*
+ NOTE. 다중스레드와 지연 자장프로퍼티
+ 다중스레드환경에서 지연 저장프래퍼터에 동시 다발지으를 살고 할때는 한번만 토기화된다는 보장이 없다. 상설되지 않은 지연 저장프로퍼티에 많은 스레드가 비슷한 시점에 접근한다면, 어러번 초기화됭 수 있습니다.
+ */
