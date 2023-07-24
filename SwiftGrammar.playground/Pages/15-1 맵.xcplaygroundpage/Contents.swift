@@ -51,6 +51,17 @@ print(doubleNumbers2)           //[0, 2, 4, 6, 8]
 doubleNumbers2 = numbers2.map { $0 * 2 }
 print(doubleNumbers2)           //[0, 2, 4, 6, 8]
 
+/// 클로저의 반복 사용
+let evenNumbers: [Int] = [0, 2, 4, 6, 8]
+let oddNumbers: [Int] = [0, 1, 3, 5, 7]
+let multiplyTwo: (Int) -> Int = { $0 * 2 }
+
+let doubledEvenNumbers = evenNumbers.map(multiplyTwo)
+print(doubleNumbers)    //[0, 4, 8, 12, 16]
+
+let dobledOddNumbers = oddNumbers.map(multiplyTwo)
+print(doubleNumbers) //[0, 2, 4, 6, 8]
+
 ///다양한 컨테이너 타입에서의 맵의 활용
 let alphabetDictionart: [String: String] = ["a":"A", "b":"B"]
 
@@ -72,26 +83,3 @@ print(resultSet)        //[2, 4, 8, 10, 6]
 let range: CountableClosedRange = (0...3)
 let resultRange: [Int] = range.map{ $0 * 2 }
 print(resultRange)          //[0, 2, 4, 6]
-
-"""
-///후행 클로저 Trailing
-"""
-/*
- 클로저가 길어지거나 가독성이 떨어질때 사용
- 단, 후행클로저는 맨 마지막 전달인자로 전달되는 클로저에만 해당되므로 전달인자로 클로저 여러개를 전달할때는 맨 마지막 클로저만 후행 클로저로 사용할 수 있다. 또한 sorted(by:) 메서드처럼 단 하나의 클로저만 전달인자로 전달하는 경우에는 소괄호를 생략해줄 수도 있다.
- */
-/// 후행 클로저 표현
-// 후행 클로저의 사용
-let names : [String] = [String]()
-
-let reversed: [String] = names.sorted() {
-    (first: String, second: String) -> Bool in
-    return first > second
-}
-
-// sorted(by:) 메서드의 소괄호까지 생략 가능합니다.
-let reserved: [String] = names.sorted { (first: String, second: String) -> Bool in
-    return first > second
-}
-
-
