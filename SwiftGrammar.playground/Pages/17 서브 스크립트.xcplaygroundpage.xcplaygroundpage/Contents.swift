@@ -1,3 +1,6 @@
 """
-///상속 extend
+///상속 extends (: parents)
 """
+
+
+
