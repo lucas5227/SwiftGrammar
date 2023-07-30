@@ -54,3 +54,65 @@ extension Optional {
 """
 ///16-3 모나드
 """
+/**
+ 합수 객체 중에서 자신의 컨텍스트와 같은 컨텍스트의 형태로 맵핑할 수 있는 힘수 객체를 달한 함수 객체라고 함 . 모나드는 닫힌 함수 객체이다.
+ 함수객체는 포장된 값에 함수를 적용 할수 있다. 그래서 모나드도 컨텍스트에 포장된 값을 처리하여 포장된 값을 컨텍스트에 다시 반환하는 함수(맵)를 적용할 수 있다. 이 매핑의 결과가 합수 객체와 같은 컨텍스트를 반환하는 함수 객체를 모나드라고 할  수 있으며, 이런 맵핑을 수행하도록 플랫만이라는 메서드를 활용한다. 플랫맵은 맵과 같이 함수를 매개변수로 받고, 옵셔널은 모나드이므로 플랫맵을 사용할 수 있다.
+ */
+/// douvledEven(_:) 함수와 플랫맵의 사용
+func doubledEven(_ num: Int) -> Int? {
+    if num.isMultiple(of: 2) {
+        return num * 2
+    }
+    return nil
+}
+
+Optional(3).flatMap(doubledEven) //nil( ==Oprional<Int>.none)
+
+
+///맵과 컴팩트의 차이
+let oprionals: [Int?] = [1, 2, nil, 5]
+
+let mapped: [Int?] = oprionals.map { $0 }
+let compacMapped: [Int] = oprionals.compactMap { $0 }
+
+print(mapped)                       //[Optional(1), Optional(2), nil, Optional(5)]
+print(compacMapped)                 //[1, 2, 5]
+
+///중섭된 컨테이너에서 맵과 플랫맵(콤팩트맵)의 차이
+let multipleContainer = [[1, 2, Optional.none], [3, Optional.none], [4, 5, Optional.none]]
+
+let mappedMultipleContainer = multipleContainer.map{ $0.map{ $0 } }
+let flatmappedMultipleContainer = multipleContainer.flatMap{ $0.flatMap{ $0 } }
+
+print(mappedMultipleContainer)              //[[Optional(1), Optional(2), nil], [Optional(3), nil], [Optional(4), Optional(5), nil]]
+print(flatmappedMultipleContainer)          //[1, 2, 3, 4, 5]
+
+///플랫맵의 활용
+func stringToInteger(_ string: String) -> Int? {
+    return Int(string)
+}
+
+func integerToString(_ integer: Int) -> String? {
+    return "\(integer)"
+}
+
+var optionalString: String? = "2"
+
+let flattenResult = optionalString.flatMap(stringToInteger)
+    .flatMap(integerToString)
+    .flatMap(stringToInteger)
+
+print(flattenResult)            //Optional(2)
+
+let mappedResult = optionalString.map(stringToInteger)  // 더 이상 체인 연결 불가
+print(mappedResult)         //Optional(Optional(2))
+
+/// 옵셔널의 맵과 플랫맵의 정의
+"""
+func map<U>(_ trasform: (Wrapped) throws -> U) rethrows -> U?
+func flatMap<U>(_ transform: (Wrapped) throws -> U?) rethrows -> U?
+"""
+
+///16. 12 옵셔널바인딩을통한연산
+
+
