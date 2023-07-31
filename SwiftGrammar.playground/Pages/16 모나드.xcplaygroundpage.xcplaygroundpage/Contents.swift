@@ -114,5 +114,29 @@ func flatMap<U>(_ transform: (Wrapped) throws -> U?) rethrows -> U?
 """
 
 ///16. 12 옵셔널바인딩을통한연산
+var result: Int?
+if let string: String = optionalString{
+    if let number: Int = stringToInteger(string) {
+        if let finalString: String = integerToString(number) {
+            if let finalNumber: Int = stringToInteger(finalString) {
+                result = Optional(finalNumber)
+            }
+        }
+    }
+}
+
+print(result)           //Optional(2)
+
+func integerToNil(parma: Int) -> String? {
+    return nil
+}
+
+optionalString  = "2"
+
+result = optionalString.flatMap(stringToInteger)
+    .flatMap(integerToNil)
+    .flatMap(stringToInteger)
+
+print(result)           //nil
 
 
