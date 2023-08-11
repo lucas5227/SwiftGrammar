@@ -166,4 +166,23 @@ print(highScool2["KL"])                 //Optional(1)
 print(highScool2["Trinity", 2])         //Optional(Student2(name: "Trinity", number: 2))
 print(highScool2["Oracle", 3])         //nil
 
+"""
+17-4 타입 서브스크립트
+인스턴스가 아니라 타입 자체에서 사용할 수 있는 서브스크립트
+subscript 키워드 앞에 static 키워드를 사용(클래스의 경우네는 class 키워드 사용)
+"""
+
+///타입 서브스크립트 구현
+enum School3: Int {
+    case elementary = 1, middle, high, university
     
+    static subscript(level: Int) -> School3? {
+        return Self(rawValue: level)
+        //return School(rawvalue: level) 과 동일.
+    }
+}
+
+let school3: School3? = School3[2]
+print(school3)
+//School3.middle
+
