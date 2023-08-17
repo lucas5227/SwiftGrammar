@@ -182,11 +182,34 @@ print(neo3.koreaAge)
 //Full name : NEO
 //15
 
-
-
 /**
- * 18-2-4 서브스크립트재정의
+ * 18-2-4 서브스크립트 재정의
  */
+class School {
+    var students: [Studunt] = [Studunt]()
+    
+    subscript(number: Int) -> Studunt {
+        print("School subscribe")
+        return students[number]
+    }
+}
+
+class MiddleSchool: School {
+    var middleStudents: [Studunt] = [Studunt]()
+    
+    //부모클래스(School)에게 상속받은 서브스크립트 재정의
+    override subscript(index: Int) -> Studunt {
+        print("MiddleSchool subcript")
+        return middleStudents[index]
+    }
+}
+let university: School = School()
+university.students.append(Studunt())
+university[0]           //School subscribe
+
+let middle: MiddleSchool = MiddleSchool()
+middle.middleStudents.append(Studunt())
+middle[0]               //MiddleSchool subcript
 
 /**
  * 18-2-5 재정의 방지
