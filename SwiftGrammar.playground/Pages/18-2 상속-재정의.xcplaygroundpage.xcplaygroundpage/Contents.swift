@@ -109,108 +109,13 @@ print(neo2.introduction)                //이름: neo, 나이 : 14 학점 : F
 print(neo2.koreanAge)                   //15
 
 /**
- * 18-2-3 프로퍼티 감시자 재정의
+ * 8-2-3 프로퍼티 감시자 재정의
  */
-class Person3 {
-    var name: String = ""
-    var age: Int = 0 {
-        didSet {
-            print("Person age : \(self.age)")
-        }
-    }
-    var koreaAge: Int {
-        return self.age + 1
-    }
-    
-    var fullName: String {
-        get {
-            return self.name
-            
-        }
-        
-        set {
-            self.name = newValue
-        }
-    }
-}
-
-class Student3: Person3 {
-    var grade: String = "F"
-    
-    override var age: Int {
-        didSet {
-            print("Student age : \(self.age)")
-        }
-    }
-    
-    override var koreaAge: Int {
-        get {
-            return super.koreaAge
-        }
-        
-        set {
-            self.age = newValue - 1
-        }
-        
-//            didset { }          //err!!!
-    }
-    
-    override var fullName: String {
-        didSet {
-            print("Full name : \(self.fullName)")
-        }
-    }
-}
-
-let lucas3: Person3 = Person3()
-lucas3.name = "lucas"
-lucas3.age = 99                      //Person age : 99
-lucas3.fullName = "Lucas Kim"
-print(lucas3.koreaAge)              //100
-
-
-let neo3: Student3 = Student3()
-neo3.name = "lucas"
-neo3.age = 15
-//Person age : 15
-//Student age : 15
-neo3.koreaAge = 15
-//Person age : 14
-//Student age : 14
-neo3.fullName = "NEO"
-print(neo3.koreaAge)
-//Full name : NEO
-//15
 
 /**
- * 18-2-4 서브스크립트 재정의
+ * 8-2-4 서브스크립트재정의
  */
-class School {
-    var students: [Studunt] = [Studunt]()
-    
-    subscript(number: Int) -> Studunt {
-        print("School subscribe")
-        return students[number]
-    }
-}
-
-class MiddleSchool: School {
-    var middleStudents: [Studunt] = [Studunt]()
-    
-    //부모클래스(School)에게 상속받은 서브스크립트 재정의
-    override subscript(index: Int) -> Studunt {
-        print("MiddleSchool subcript")
-        return middleStudents[index]
-    }
-}
-let university: School = School()
-university.students.append(Studunt())
-university[0]           //School subscribe
-
-let middle: MiddleSchool = MiddleSchool()
-middle.middleStudents.append(Studunt())
-middle[0]               //MiddleSchool subcript
 
 /**
- * 18-2-5 재정의 방지
+ * 8-2-5 재정의 방지
  */
