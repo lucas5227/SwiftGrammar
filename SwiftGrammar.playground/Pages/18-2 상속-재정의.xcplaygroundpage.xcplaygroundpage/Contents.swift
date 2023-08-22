@@ -180,6 +180,35 @@ print(neo3.koreanAge)           //3
 /**
  * 8-2-4 서브스크립트재정의
  */
+class Student4 {
+    // Student4 클래스의 프로퍼티들
+}
+
+class School4 {
+    var students: [Student4] = [Student4]()
+    
+    subscript(number: Int) -> Student4 {
+        print("School subscript")
+        return students[number]
+    }
+}
+
+class MiddleSchool: School4 {
+    var middleStudent: [Student4] = [Student4]()
+    
+    // 부모클래스(School)에세 상속받은 서브스크립트 재정의
+    override subscript(index: Int) -> Student4 {
+        print("MiddleSchool subscript")
+        return middleStudent(index)
+    }
+}
+
+let university: School = School()
+university.students.append(Student())
+university[0] //Schoolsubscript
+let middle: MiddleSchool = MiddleSchool()
+middle.middleStudents.append(Student())
+middle[0] //MiddleSchoolsubscript
 
 /**
  * 8-2-5 재정의 방지
