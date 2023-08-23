@@ -21,7 +21,7 @@ class Person {
     }
 }
 
-class Studunt: Person {
+class Student: Person {
     var grade: String = "F"
     
     func study() {
@@ -33,7 +33,7 @@ class Studunt: Person {
     }
 }
 
-class UniversityStudent: Studunt {
+class UniversityStudent: Student {
     var major: String = ""
     
     class func introduceClass() {
@@ -49,14 +49,14 @@ class UniversityStudent: Studunt {
 let lucas: Person = Person()
 lucas.speak()           //가나다라마바사
 
-let nee: Studunt = Studunt()
+let nee: Studunt = Student()
 nee.speak()             //저는 학생입니다.
 
 let trinity: UniversityStudent = UniversityStudent()
 trinity.speak()         //저는 학생입니다. 대학생이죠.
 
 print(Person            .introduceClass())              //인류의 소원은 평화입니다.
-print(Studunt           .introduceClass())              //인류의 소원은 평화입니다.
+print(Student           .introduceClass())              //인류의 소원은 평화입니다.
 print(UniversityStudent .introduceClass() as String)    //인류의 소원은 평화입니다.
 UniversityStudent.introduceClass() as Void              //인류의 소원은 평화입니다.
 
@@ -180,30 +180,26 @@ print(neo3.koreanAge)           //3
 /**
  * 8-2-4 서브스크립트재정의
  */
-class Student4 {
-    // Student4 클래스의 프로퍼티들
-}
-
 class School4 {
-    var students: [Student4] = [Student4]()
+    var students: [Student] = [Student]()
     
-    subscript(number: Int) -> Student4 {
+    subscript(number: Int) -> Student {
         print("School subscript")
         return students[number]
     }
 }
 
 class MiddleSchool: School4 {
-    var middleStudent: [Student4] = [Student4]()
+    var middleStudents: [Student] = [Student]()
     
     // 부모클래스(School)에세 상속받은 서브스크립트 재정의
-    override subscript(index: Int) -> Student4 {
+    override subscript(index: Int) -> Student {
         print("MiddleSchool subscript")
-        return middleStudent(index)
+        return middleStudents[index]
     }
 }
 
-let university: School = School()
+let university: School4 = School4()
 university.students.append(Student())
 university[0] //Schoolsubscript
 let middle: MiddleSchool = MiddleSchool()
@@ -211,5 +207,34 @@ middle.middleStudents.append(Student())
 middle[0] //MiddleSchoolsubscript
 
 /**
- * 8-2-5 재정의 방지
+ * 8-2-5 재정의 방지 final
  */
+class Person_5 {
+    final var name: String = ""
+    
+    final func speak() {
+        print("가나다라마바사")
+    }
+}
+
+
+final class Student_5: Person_5 {
+    //err! Person의 name은 final을 사용하여 재정의 할수 없도록 함
+//    override var name: String {
+//        set {
+//            super.name = newValue
+//        }
+//
+//        get {
+//            return "학생"
+//        }
+//    }
+    
+    //err! Person의 speak()는 final을 사용하여 재정의 할수 없도록 함
+//    override func speak() {
+//        print("저는 학생입니다.")
+//    }
+    
+    //err! Student 클래스는 final을 사용하여 재정의 할수 없도록 함
+//    class UniversityStudent_5: Student_5 { }
+}
