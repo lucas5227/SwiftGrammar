@@ -64,4 +64,77 @@ class Student: Person {
 
 /**
  * 18- 3- 4 이니설 라이저 상속 및 재정의
+ * 기본적으로스위프트의이니셜라이저는부모클래스의이니셜라이저를상속받지않습니다.부
+ 모콜래스로부터물려받은이니셜라이저는자식클래스에최적화되어있지않아서, 부모클래스 의 이니셜라이저를사용했을때자식클레스의새로운인스던스가완전하고정확하게초기화
+ 되지않는상황을방지하고자함입니다. 안전하고적절하다고만단되는특정한상황에서는부 모 클래스의이니셜라이저가상속되기도합 니다. 이는이니셜라이저자동상속( 18. 3. 5절) 에서 다루겠습니다. 보통부모클래스의이니셜라이저와똑같은이니셜라이저를자식클래스에서사용하고싶다면
+ 자 식클래스에서부모의이니셜라이저와똑같은이니셜라이저를구현해주면됩니다.
+ 부모클래스와등일한지정이니셜라이저를자식클래스에서구현해주려면재정의하면됩니다. 그러려면override수식어를붙여야합니다. 클래스에주어지는기본이니셜라이저를재정의 할때도마찬가지입니다. 자식클래스의편의이니셜라이저가부모클래스의지정이니셜라이저 들 재 정 의 하 는 경 우 에 도 o v e r r i d e 수 식 어 를 붙 여 줍 니 다.
+ 반 대로부모클래스의편의이니셜라이저와동일한이니셜라이저를자식클래스에구현할때는 o v e r r i d e 수 식 어 를 붙 이 지 않 습 니 다. 자 식 클 래 스 에 서 부 모 클 래 스 의 편 의 이 니 셜 라 이 저 는 절 대로호출할수없기때문입니다. 즉, 재정의할필요가없습니다.
  */
+///글래스이니셜라이저의자정의
+class Person_4 {
+    var name: String
+    var age: Int
+    
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
+    
+    convenience init(name: String) {
+        self.init(name: name, age: 0)
+    }
+}
+
+class Student_4: Person_4 {
+    var major: String
+    
+    override init(name: String, age: Int) {
+        self.major = "Swift"
+        super.init(name: name, age: age)
+    }
+    
+    convenience init(name: String) {
+        self.init(name: name, age: 7)
+    }
+}
+
+///실 패가능한이나셜라이저의재 정의
+class Person_4_2 {
+    var name: String
+    var age: Int
+    
+    init() {
+        self.name = "Unknown"
+        self.age = 0
+    }
+    
+    init?(name: String, age: Int) {
+        return nil
+    }
+    self.name = name
+    self.age = age
+    
+    init?(age: Int) {
+        
+        if age < 0 {
+            return nil
+        }
+        self.name = "Unknown"
+        self.age = age
+    }
+}
+
+class Student_4_2: Person_4_2 {
+    var major: String
+    
+    override init?(namle: String, age: Int) {
+        self.major = "Swift"
+        super.init(name: name, age: age)
+    }
+    
+    override init(age: Int) {
+        self.major = "Swift"
+        super.init()
+    }
+}
