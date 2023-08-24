@@ -189,6 +189,9 @@ class School_4 {
     }
 }
 
+class MiddleSchool_4: School_4 {
+    
+}
 /**
  * 18-2-5 재정의 방지
  */
