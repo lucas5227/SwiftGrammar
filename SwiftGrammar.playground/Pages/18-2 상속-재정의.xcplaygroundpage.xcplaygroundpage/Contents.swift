@@ -190,7 +190,13 @@ class School_4 {
 }
 
 class MiddleSchool_4: School_4 {
+    var middleStudents: [Student] = [Student]()
     
+    //부모클래스 [Student]()에게 상속받은 subscript 제정의
+    override subscript(index: Int) -> Student {
+        print("middleSchool_4 subscript")
+        return middleStudents[index]
+    }
 }
 /**
  * 18-2-5 재정의 방지
