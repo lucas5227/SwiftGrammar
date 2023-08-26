@@ -198,6 +198,10 @@ class MiddleSchool_4: School_4 {
         return middleStudents[index]
     }
 }
+
+let university_4: School_4 = School_4()
+university_4.student.append(Student())
+university_4[0]         //School subscript
 /**
  * 18-2-5 재정의 방지
  */
