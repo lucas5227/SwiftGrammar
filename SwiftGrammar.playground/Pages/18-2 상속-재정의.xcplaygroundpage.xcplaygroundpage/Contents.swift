@@ -200,8 +200,12 @@ class MiddleSchool_4: School_4 {
 }
 
 let university_4: School_4 = School_4()
-university_4.student.append(Student())
+university_4.students.append(Student())
 university_4[0]         //School subscript
+
+let middle_4: MiddleSchool_4 = MiddleSchool_4()
+middle_4.middleStudents.append(Student())
+middle_4[0]             //middleSchool_4 subscript
 /**
  * 18-2-5 재정의 방지
  */
