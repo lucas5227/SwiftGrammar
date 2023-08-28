@@ -49,7 +49,7 @@ class UniversityStudent: Student {
 let lucas: Person = Person()
 lucas.speak()           //가나다라마바사
 
-let nee: Studunt = Student()
+let nee: Student = Student()
 nee.speak()             //저는 학생입니다.
 
 let trinity: UniversityStudent = UniversityStudent()
@@ -109,7 +109,7 @@ print(neo2.introduction)                //이름: neo, 나이 : 14 학점 : F
 print(neo2.koreanAge)                   //15
 
 /**
- * 8-2-3 프로퍼티 감시자 재정의
+ * 18-2-3 프로퍼티 감시자 재정의
  * 프로퍼티 감시자도 프로퍼티의 접근자와 설정자처럼 재정의 할수 있다. 또 조상 클래스에 정의한 프로퍼티가 연산 프로퍼티인지 저장프로퍼티인지는 상관없다. 다만 상수지장 프로퍼티나 읽기 전용 연산프로퍼티는 프로퍼디 감시자를 재정의 할수 없다. 왜냐하면 상수 저장 프로퍼티나 읽기 전용 연산 프로퍼티는 값을 설정할 수 없으므로 willSet 이나 didSet 메서드를 사용한 프로퍼티 감시자를 원천직으로 사용할 수 없기 때문이다. 또, 프로퍼티 감시자를 재정의하더라도 조상클래스에 정의한 프로퍼티 감시자도 동작한다는점, 잊지말아야 한다. 프로퍼티의 접근자와 프로퍼티 감시자는 동시에 재정의할 수 없다. 만약 둘 다 동작하길 원한다면 재정의하는 점근자에 프로퍼티 감시자의 역할을 구현해야 한다.
  */
 class Person3 {
@@ -133,7 +133,7 @@ class Person3 {
         }
     }
 }
-class Studunt3: Person3 {
+class Student3: Person3 {
     var grade: String = "F"
     override var age: Int {
         didSet {
@@ -166,7 +166,7 @@ lucas3.age = 99
 lucas3.fullName = "Lucas Kim"
 print(lucas3.koreanAge)
 
-let neo3: Studunt3 = Studunt3()
+let neo3: Student3 = Student3()
 neo3.name = "neo"
 neo3.age = 1
 //Person age: 1
@@ -178,63 +178,17 @@ neo3.fullName = "NEO"           //Full Name : NEO
 print(neo3.koreanAge)           //3
 
 /**
- * 8-2-4 서브스크립트재정의
+ * 18-2-4 서브스크립트재정의
  */
-class School4 {
+class School_4 {
     var students: [Student] = [Student]()
     
     subscript(number: Int) -> Student {
-        print("School subscript")
+        print("School subcript")
         return students[number]
     }
 }
 
-class MiddleSchool: School4 {
-    var middleStudents: [Student] = [Student]()
-    
-    // 부모클래스(School)에세 상속받은 서브스크립트 재정의
-    override subscript(index: Int) -> Student {
-        print("MiddleSchool subscript")
-        return middleStudents[index]
-    }
-}
-
-let university: School4 = School4()
-university.students.append(Student())
-university[0] //Schoolsubscript
-let middle: MiddleSchool = MiddleSchool()
-middle.middleStudents.append(Student())
-middle[0] //MiddleSchoolsubscript
-
 /**
- * 8-2-5 재정의 방지 final
+ * 18-2-5 재정의 방지
  */
-class Person_5 {
-    final var name: String = ""
-    
-    final func speak() {
-        print("가나다라마바사")
-    }
-}
-
-
-final class Student_5: Person_5 {
-    //err! Person의 name은 final을 사용하여 재정의 할수 없도록 함
-//    override var name: String {
-//        set {
-//            super.name = newValue
-//        }
-//
-//        get {
-//            return "학생"
-//        }
-//    }
-    
-    //err! Person의 speak()는 final을 사용하여 재정의 할수 없도록 함
-//    override func speak() {
-//        print("저는 학생입니다.")
-//    }
-    
-    //err! Student 클래스는 final을 사용하여 재정의 할수 없도록 함
-//    class UniversityStudent_5: Student_5 { }
-}
