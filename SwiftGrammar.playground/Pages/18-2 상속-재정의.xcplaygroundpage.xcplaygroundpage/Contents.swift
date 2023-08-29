@@ -209,3 +209,10 @@ middle_4[0]             //middleSchool_4 subscript
 /**
  * 18-2-5 재정의 방지
  */
+class Person_5 {
+    final var name: String = ""
+    
+    final func spack() {
+        print("가나다라마바사")
+    }
+}
