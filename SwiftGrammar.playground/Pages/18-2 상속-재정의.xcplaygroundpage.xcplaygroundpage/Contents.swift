@@ -216,3 +216,27 @@ class Person_5 {
         print("가나다라마바사")
     }
 }
+
+//final class Student: Person_5 {
+//    //err! Person의 name은 final을 사용하여
+//    //재정의를 할수 없도록 함
+//    override var name: String {
+//        set {
+//            super.name = newValue
+//        }
+//
+//        get {
+//            return "학생"
+//        }
+//    }
+//    //err! Person의 speak()는 final을 사용하여
+//    //재정의를 할수 없도록 함
+//    override func speak() {
+//        print("저는 학생입니다.")
+//    }
+//}
+
+//err!
+//Student 클래스는 final을 사용하여
+//상속할 수 있도록 했기 떄문이다.
+//class UniversityStudent: Student_5()
