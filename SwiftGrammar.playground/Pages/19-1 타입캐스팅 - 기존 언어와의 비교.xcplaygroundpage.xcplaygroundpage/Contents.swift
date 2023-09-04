@@ -15,17 +15,18 @@ convertedValue = 5.5
 */
 
 ///Int구조체의다양한이니셜라이저정의
-publicstructI n t :FixedWidthInteger,SignedInteger{
-/ *34...* publicinit(bitPatternx :UInt)
-publici n i t ( _source:Float) publicinit?(exactlysource:Float)
-publici n i t i _source:Double) publicinit?(exactlysource:Double)
-publici n i t ( _source:Float8o) publicinit?(exactlysource:Float8D)
-publicinit(bitPatternpointer:OpaquePointer?) publicinit(fromdecoder:Decoder)throws
-publicinitsT_source:) whereT :BinaryFloatingPoint publicinit(bitPatternobjectID:ObjectIdentifier) publicinit‹›(bitPattern:UnsafekutablePointer«U?)
-p u b l i cinit‹U›(bitPattern:UnsafePointer<U›?) publicinit(bitPattern:UnsafeMutableRawPointer?)
-p u b l i c i n i t ( b i t P a t t e r n : UnsafeRawPointer?)
-# 6 9 . .*
-publicconvenienceinit?«›_text:S ,radix:I n t=default) whereS : StringProtocol
-publicconvenienceinit(integerliteralvalue:Int)
-3 56 件 •
- 
+public struct Int: FixedWidthInteger,SignedInteger{
+    /* 중략 */
+    public init(bitPatternx: UInt)
+    public init( _source: Float) public init?(exactlysource:Float)
+    public init( _source: Double) public init?(exactlysource:Double)
+    public init( _source: Float32) public init?(exactlysource:Float8D)
+    public init(bitPatternpointer: OpaquePointer?) publicinit(fromdecoder:Decoder)throws
+    public init sT_source:) whereT :BinaryFloatingPoint publicinit(bitPatternobjectID:ObjectIdentifier) publicinit‹›(bitPattern:UnsafekutablePointer«U?)
+    public init<U>(bitPattern: UnsafePointer<U>?) public init(bitPattern: UnsafeMutableRawPointer?)
+    public init(bitPattern: UnsafeRawPointer?)
+    /* 중략 */
+    public convenience init?«›_text:S ,radix:I n t=default) whereS : StringProtocol
+    public convenience init(integerliteralvalue:Int)
+    /* 중략 */
+}
