@@ -45,7 +45,6 @@ class Americano: Coffee {
         super.init(shot: shot)
     }
 }
-
 ///
 let coffee: Coffee = Coffee(shot: 1)
 print(coffee.description)           //1 shot(s) coffee
@@ -66,4 +65,4 @@ print(yourCoffee is Coffee)        //true
 print(myCoffee is Latte)          //false
 print(yourCoffee is Latte)        //true
 
-
+///메타타입
