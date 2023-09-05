@@ -58,4 +58,4 @@ print(integerValue)         //Oprional(123)
 stringValue = "A123"
 integerValue = Int(stringValue)
 
-print(integerValue)     //nil == Optional.nil
+print(integerValue)     //nil == Optional.none
