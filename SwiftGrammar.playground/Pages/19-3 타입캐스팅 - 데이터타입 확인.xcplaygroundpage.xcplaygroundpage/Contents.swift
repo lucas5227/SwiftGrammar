@@ -60,5 +60,10 @@ print(coffee is Coffee)            //true
 print(coffee is Americano)         //false
 print(coffee is Latte)             //false
 
-print(myCoffee is Coffee)          //false
-print(myCoffee is Coffee)          //false
+print(myCoffee is Coffee)          //true
+print(yourCoffee is Coffee)        //true
+
+print(myCoffee is Latte)          //false
+print(yourCoffee is Latte)        //true
+
+
