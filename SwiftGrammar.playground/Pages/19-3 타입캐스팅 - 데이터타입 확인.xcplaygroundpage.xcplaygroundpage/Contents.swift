@@ -57,5 +57,5 @@ let yourCoffee: Latte = Latte(flavor: "green tea", shot: 3)
 print(yourCoffee.description)            //3 shot(s) green tea latte
 
 print(coffee is Coffee)            //true
-print(coffee is Americano)         //true
-    print(coffee is Latte)         //true
+print(coffee is Americano)         //false
+print(coffee is Latte)             //false
