@@ -73,3 +73,10 @@ let intType: Int.Type = Int.self
 let stringType: String.Type = String.self
 let classType: SomeClass.Type = SomeClass.self
 let protocolProtocol: SomeProtocol.Protocol = SomeProtocol.self
+
+var someType: Any.Type
+
+someType = intType
+print(someType)         //Int
+
+someType = stringType
