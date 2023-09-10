@@ -80,3 +80,11 @@ someType = intType
 print(someType)         //Int
 
 someType = stringType
+print(someType)         //String
+
+someType = classType
+print(someType)         //classType
+
+someType = protocolProtocol
+print(someType)         //someProtocol
+
