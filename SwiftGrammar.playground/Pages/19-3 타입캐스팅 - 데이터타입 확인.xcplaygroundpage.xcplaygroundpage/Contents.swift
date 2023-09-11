@@ -88,3 +88,19 @@ print(someType)         //classType
 someType = protocolProtocol
 print(someType)         //someProtocol
 
+/*
+ 인스턴스 self와 타입 self의 의미
+ .self표친은 값 뒤에 써주면 그 값 자신을 타입 이름 뒤에 써주면 타입을 표현하는 값을 반환한다 "stringValue" 그 자체를 String.self는 String 타입을 나타내는 값이다.
+ */
+///t ype(of:) 함수와 .self의 사용
+print(type(of: coffee) == Coffee.self)          //false
+print(type(of: coffee) == Americano.self)          //true
+print(type(of: coffee) == Latte.self)          //false
+
+print(type(of: coffee) == Americano.self)            //false
+print(type(of: myCoffee) == Americano.self)          //true
+print(type(of: yourCoffee) == Americano.self)        //false
+
+print(type(of: coffee) == Latte.self)            //false
+print(type(of: myCoffee) == Latte.self)          //false
+print(type(of: yourCoffee) == Latte.self)        //true
