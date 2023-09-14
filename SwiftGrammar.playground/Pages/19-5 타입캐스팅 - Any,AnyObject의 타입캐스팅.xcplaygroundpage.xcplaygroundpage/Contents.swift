@@ -65,3 +65,4 @@ checkType(of: myCoffee)             //item is Americano
 checkType(of: yourCoffee)           //item is Latte
 checkType(of: actingConstant)       //item is Latte
 
+///Any의 타입캐스팅
