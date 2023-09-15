@@ -66,3 +66,30 @@ checkType(of: yourCoffee)           //item is Latte
 checkType(of: actingConstant)       //item is Latte
 
 ///Any의 타입캐스팅
+func checkAnyType(of item: Any) {
+    switch item {
+    case 0 as Int:
+        print("zero as an Int")
+    case 0 as Double:
+        print("zero as an Double")
+    case let someInt as Int:
+        print("an interger value of \(someInt)")
+    case let someDoble as Double where someDoble > 0:
+        print("a positive douvle value of \(someDoble)")
+    case is Double:
+        print("some other double value that I don't want to print")
+    case let someString as String:
+        print("a string value of \"\(someString)")
+    case let (x, y) as (Double, Double):
+        print("an (x, y) point at \(x), \(y)")
+    case let latte as Latte:
+        print(latte.description)
+    case let stringConverter as (String) -> String:
+        print(stringConverter("lucas"))
+        
+    default:
+        print("something else : \(type(of: item))")
+    }
+}
+
+
