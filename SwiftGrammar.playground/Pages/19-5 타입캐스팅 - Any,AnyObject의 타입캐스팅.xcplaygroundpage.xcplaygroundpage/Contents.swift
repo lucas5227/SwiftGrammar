@@ -79,17 +79,39 @@ func checkAnyType(of item: Any) {
     case is Double:
         print("some other double value that I don't want to print")
     case let someString as String:
-        print("a string value of \"\(someString)")
+        print("a string value of \"\(someString)\"")
     case let (x, y) as (Double, Double):
         print("an (x, y) point at \(x), \(y)")
     case let latte as Latte:
         print(latte.description)
     case let stringConverter as (String) -> String:
         print(stringConverter("lucas"))
-        
     default:
         print("something else : \(type(of: item))")
     }
 }
+
+
+checkAnyType(of: 0)                             //zero as an Int
+checkAnyType(of: 0.0)                           //zero as an Double
+checkAnyType(of: 42)                            //an interger value of 42
+checkAnyType(of: 3.14159)                       //a positive douvle value of 3.14159
+checkAnyType(of: -0.25)                         //some other double value that I don't want to print
+checkAnyType(of: "hello")                        //a string value of "hello"
+checkAnyType(of: (3.0, 5.0))                     //an (x, y) point at 3.0, 5.0
+checkAnyType(of: yourCoffee)                     //1 shot(s) cafe latte
+checkAnyType(of: coffee)                         //something else : Coffee
+checkAnyType(of: { (name: String) -> String in "Hello, \(name)" })
+//Hello, lucas
+
+
+
+
+
+
+
+
+
+
 
 
