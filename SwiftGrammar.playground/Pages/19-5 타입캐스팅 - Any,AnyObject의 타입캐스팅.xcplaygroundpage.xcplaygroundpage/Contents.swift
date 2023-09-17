@@ -104,7 +104,10 @@ checkAnyType(of: coffee)                         //something else : Coffee
 checkAnyType(of: { (name: String) -> String in "Hello, \(name)" })
 //Hello, lucas
 
-
+/*
+ 읍셔널과 Any
+ Any타입은 모든 값 타입을 표현합니다. 더불어 옵셔널타입도 표현할수 있습니다. 그런데도 Any타입의 값이 들어와야 할자리에 읍셔널타입의 값이 위치한다면 스위프트 컴파일러는 경고를 한다. 의도적으로 옵셔널깊을 Any타입의 값으로 사용 하고자 한다면 as연산자를 사용하여 명시적 타입 캐스팅을 해주면 경고메 시지를 받지 않습니다.
+ */
 
 
 
