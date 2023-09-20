@@ -11,5 +11,26 @@
  *
  *  protocol 프로토콜 이름 {
  *      프로토콜 정의
-*      }
+ *      }
+ *
+ * 구조체, 클래스, 열거형등에서 프로토콜을 채택하려면 타입이름뒤에 콜론( : )을 붙여준후 채택할 프로토콜 이름을 쉼표(, )로 구분하여  명시 해준다.
  */
+/*
+/// 타입의 프로토콜 채택
+struct SomeStruct: AProtocol , AnotherProtocol {
+    // 구조체 정의
+}
+
+class SomeClass: AProtocol , AnotherProtocol {
+    // 클래스 정의
+}
+
+enum SomeEnum: AProtocol , AnotherProtocol {
+    // 열거형 정의
+}
+
+/// SuperClass를 상속받는 클래스의 프로토콜 채택
+class SomeClass: SuperClass, AProtocol, AnotherProtocol {
+    //클래스 정의
+}
+*/
