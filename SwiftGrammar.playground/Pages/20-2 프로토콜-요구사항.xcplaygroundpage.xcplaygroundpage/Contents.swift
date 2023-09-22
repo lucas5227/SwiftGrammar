@@ -48,3 +48,83 @@ class Mail: Sendable {
         self.to = receiver
     }
 }
+
+///Receiveable, Sendable프로토콜과 두 프로토콜을 준수하는 Message와 Mail클래스
+//무언가를 발신할 수 있는 기능
+protocol Receiveable {
+    func received(data: Any, from: Sendable_2)
+}
+
+protocol Sendable_2 {
+    var from: Sendable_2 { get }
+    var to: Receiveable { get }
+    
+    func send(data: Any)
+    
+    static func isSendableInstance(_ instance: Any) -> Bool
+}
+//수신, 발신이 가능한 Message 클래스
+class Message: Sendable_2, Receiveable {
+    //발신은 발신 가능한 객테, 즉 Sendavle 프로토콜을 준수하는 타입의 인스턴스여야 한다
+    var from: Sendable_2 {
+        return self
+    }
+    
+    //상대방은 수신 가능한 객테, 즉 Receiveavle 프로토콜을 준수하는 타입의 인스턴스여야 한다.
+    var to: Receiveable?
+    
+    //메세지를 발신한다.
+    func send(data: Any) {
+        guard let receiver: Receiveable = self.to else {
+            print("Message has no receiver")
+            return
+        }
+        //수신 가능한 인스턴스의 receibed 메서드를 호출한다.
+        receiver.received(data: data, from: self.from)
+    }
+    
+    //메세지를 수신한다.
+    func received(data: Any, from: Sendable) {
+        print("Message receibed \(data) from \(from)")
+    }
+    
+    //class 메서드이므로 상속이 가능하다.
+    class func isSendableInstance(_ instance: Any) -> Bool {
+        if let sendableInstance: Sendable_2 = instance as? Sendable_2 {
+            return sendableInstance.to != nil
+        }
+        return false
+    }
+}
+
+//수신, 발신이 가능한 Mail 클래스
+class Mail: Sendable_2, Receiveable {
+    var from: Sendable_2 {
+        return self
+    }
+    
+    var to: Receiveable?
+    
+    func send(data: Any) {
+        guard let receiver: Receiveable = self.to else {
+            print("Mail has no receiver")
+            return
+        }
+        
+        receiver.received(data: data, from: self.from)
+    }
+    
+    func received(data: Any, from: Sendable_2) {
+        print("Mail received \(data) from \(from)")
+    }
+    
+    //static 메서드이므로 상속이 불가능하다.
+    static func isSendavleInstance(_ instance: Any) -> Bool {
+        if let sendavleInstance: Sendable = instance as? Sendable_2 {
+            return sendavleInstance.to != nil
+        }
+        return false
+    }
+}
+
+
