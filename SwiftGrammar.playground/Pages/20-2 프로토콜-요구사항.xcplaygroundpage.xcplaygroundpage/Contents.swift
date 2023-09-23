@@ -51,31 +51,31 @@ class Mail: Sendable {
 
 ///Receiveable, Sendable프로토콜과 두 프로토콜을 준수하는 Message와 Mail클래스
 //무언가를 발신할 수 있는 기능
-protocol Receiveable {
+protocol Receiveable_2 {
     func received(data: Any, from: Sendable_2)
 }
 
 protocol Sendable_2 {
     var from: Sendable_2 { get }
-    var to: Receiveable { get }
+    var to: Receiveable_2? { get }
     
     func send(data: Any)
     
     static func isSendableInstance(_ instance: Any) -> Bool
 }
 //수신, 발신이 가능한 Message 클래스
-class Message: Sendable_2, Receiveable {
+class Message_2: Sendable_2, Receiveable_2 {
     //발신은 발신 가능한 객테, 즉 Sendavle 프로토콜을 준수하는 타입의 인스턴스여야 한다
     var from: Sendable_2 {
         return self
     }
     
     //상대방은 수신 가능한 객테, 즉 Receiveavle 프로토콜을 준수하는 타입의 인스턴스여야 한다.
-    var to: Receiveable?
+    var to: Receiveable_2?
     
     //메세지를 발신한다.
     func send(data: Any) {
-        guard let receiver: Receiveable = self.to else {
+        guard let receiver: Receiveable_2 = self.to else {
             print("Message has no receiver")
             return
         }
@@ -84,7 +84,7 @@ class Message: Sendable_2, Receiveable {
     }
     
     //메세지를 수신한다.
-    func received(data: Any, from: Sendable) {
+    func received(data: Any, from: Sendable_2) {
         print("Message receibed \(data) from \(from)")
     }
     
@@ -98,15 +98,15 @@ class Message: Sendable_2, Receiveable {
 }
 
 //수신, 발신이 가능한 Mail 클래스
-class Mail: Sendable_2, Receiveable {
+class Mail_2: Sendable_2, Receiveable_2 {
     var from: Sendable_2 {
         return self
     }
     
-    var to: Receiveable?
+    var to: Receiveable_2?
     
     func send(data: Any) {
-        guard let receiver: Receiveable = self.to else {
+        guard let receiver: Receiveable_2 = self.to else {
             print("Mail has no receiver")
             return
         }
@@ -119,12 +119,46 @@ class Mail: Sendable_2, Receiveable {
     }
     
     //static 메서드이므로 상속이 불가능하다.
-    static func isSendavleInstance(_ instance: Any) -> Bool {
-        if let sendavleInstance: Sendable = instance as? Sendable_2 {
+    static func isSendableInstance(_ instance: Any) -> Bool {
+        if let sendavleInstance: Sendable_2 = instance as? Sendable_2 {
             return sendavleInstance.to != nil
         }
         return false
     }
 }
 
+//두 Message 인스턴스를 생성한다.
+let myPhoneMessage: Message_2 = Message_2()
+let yourPhoneMessage: Message_2 = Message_2()
 
+//아직 수신받을 인스턴스가 없다.
+myPhoneMessage.send(data: "Hi")                     //Message has no receiver
+
+//MESSAGE 인스턴스는 발신과 수신이 모두 가능하므로 메시지를 주고 받을 수 있다.
+myPhoneMessage.to = yourPhoneMessage
+myPhoneMessage.send(data: "Hello")                  //Message receibed Hello from Message_2
+
+//두 Mail 인스턴스 생성
+let myMail: Mail_2 = Mail_2()
+let yourMail: Mail_2 = Mail_2()
+
+myMail.send(data: "Hi")                             //Mail has no receiver
+
+//Mail과 Message 모두 Sendable과 Receiveavle 프로토콜을 준수하므로
+//서로 주고 받을 수 있다.
+myMail.to = yourMail
+myMail.send(data: "Hi")                             //Mail received Hi from Mail_2
+
+myMail.to = myPhoneMessage
+myMail.send(data: "Bye")                            //Message receibed Bye from Mail_2
+
+//String은 Sendable 프로토콜을 준수하지 않는다.
+Message_2.isSendableInstance("Hello")               //false
+
+//Mail과 Message은 Sendable 프로토콜을 준수한다.
+Message_2.isSendableInstance(myPhoneMessage)        //true
+
+//yourPhoneMessage는 to 프로퍼티가 설정죄디 않아서 보낼 수 없는 상태이다.
+Message_2.isSendableInstance(yourPhoneMessage)      //false
+Mail_2.isSendableInstance(myPhoneMessage)           //true
+Mail_2.isSendableInstance(myMail)                   //true
