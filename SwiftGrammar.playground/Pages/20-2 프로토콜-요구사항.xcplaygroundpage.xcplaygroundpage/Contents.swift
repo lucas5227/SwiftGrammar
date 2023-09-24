@@ -162,3 +162,41 @@ Message_2.isSendableInstance(myPhoneMessage)        //true
 Message_2.isSendableInstance(yourPhoneMessage)      //false
 Mail_2.isSendableInstance(myPhoneMessage)           //true
 Mail_2.isSendableInstance(myMail)                   //true
+
+
+//20-2-3 가변메서드요구
+//Resettable 프로토콜의 가변 메서드 요구
+protocol Resettable {
+    mutating func reset()
+}
+
+class Person: Resettable {
+    var name: String?
+    var age: Int?
+    
+    func reset() {
+        self.name = nil
+        self.age = nil
+    }
+}
+
+struct Point: Resettable {
+    var x: Int = 0
+    var y: Int = 0
+    
+    mutating func reset() {
+        self.x = 0
+        self.y = 0
+    }
+}
+
+enum Direction: Resettable {
+    case east, west, south, north, unknown
+    
+    mutating func reset() {
+        self = Direction.unknown
+    }
+}
+
+//20-2-4 이니셜라이저 요구
+
