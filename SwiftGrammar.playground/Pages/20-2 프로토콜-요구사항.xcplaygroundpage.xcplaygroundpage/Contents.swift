@@ -199,4 +199,89 @@ enum Direction: Resettable {
 }
 
 //20-2-4 이니셜라이저 요구
+///프로토콜의 이니설라이저 요구와 구조체의 이니셜라이저 요구구천
+protocol Named {
+    var name: String { get }
+    
+    init(name: String)
+}
 
+struct Pet: Named {
+    var name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+}
+
+///클래스의 이니셜라이저 요구구현
+class Person: Named {
+    var name: String
+    
+    required init(name: String) {
+        self.name = name
+    }
+}
+
+///상속 불가능한 클래스의 이니설 라이저 요구구현
+final class Person: Named {
+    var name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+}
+
+
+///상속받은 클래스의 이니셜라이저 요구 구현 및 재정의
+class School {
+    var name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+}
+
+class MiddleSchool: School, Named {
+    required override init(name: String) {
+        super.init(name: name)
+    }
+}
+
+///실패 가능한 이니셜 라이저 요구를 포함하는 Named 프로토콜과 Named 프로토들을 준수하는 다양한 타입들
+protocol Named {
+    var name: String { get }
+    
+    init?(name: String)
+}
+
+struct Animal: Named {
+    var name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+}
+
+struct Pet: Named {
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
+}
+
+class Person: Named {
+    var name: String
+    
+    required init(name: String) {
+        self.name = name
+    }
+}
+
+class School: Named {
+    var name: String
+    
+    required init?(name: String) {
+        self.name = name
+    }
+}
