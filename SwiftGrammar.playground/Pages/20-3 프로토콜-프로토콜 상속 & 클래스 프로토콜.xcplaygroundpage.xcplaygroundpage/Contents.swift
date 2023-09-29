@@ -31,3 +31,20 @@ class SomeClass: ReadWriteSpeakable {
         print("Speak")
     }
 }
+
+///클래스전용 프로토골의 정의
+protocol ClassOnlyProtocol: class, Readable, Writeable {
+    //추가 요구하상
+}
+
+class SomeClass_2: ClassOnlyProtocol {
+    func read() { }
+    func write() { }
+}
+
+
+//err!! ClassOnlyProtocol 프로토콜은 클래스 타입에만 채택가능하다.
+struct SomeStruct: ClassOnlyProtocol {
+    func read() { }
+    func write() { }
+}
