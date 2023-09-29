@@ -42,9 +42,10 @@ class SomeClass_2: ClassOnlyProtocol {
     func write() { }
 }
 
-
-//err!! ClassOnlyProtocol 프로토콜은 클래스 타입에만 채택가능하다.
-struct SomeStruct: ClassOnlyProtocol {
-    func read() { }
-    func write() { }
-}
+/*
+ //err!! ClassOnlyProtocol 프로토콜은 클래스 타입에만 채택가능하다.
+ struct SomeStruct: ClassOnlyProtocol {
+ func read() { }
+ func write() { }
+ }
+*/
