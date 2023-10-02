@@ -5,15 +5,26 @@
 ///프로토콜의 선택적 요구
 import Foundation
 
-@objc protocol Noveable {
+@objc protocol Moveable {
     func walk()
     @objc optional func fly()
 }
 
 //걷기만 할 수 있는 호랑이
-class Tiger: NSObject, Noveable {
+class Tiger: NSObject, Moveable {
     func walk() {
         print("Tieger walks")
+    }
+}
+
+//걷고 날수 있는 새
+class Bird: NSObject, Moveable {
+    func walk() {
+        print("Bird walks")
+    }
+    
+    func fly() {
+        print("Bird flys")
     }
 }
 
