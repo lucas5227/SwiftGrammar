@@ -28,3 +28,15 @@ class Bird: NSObject, Moveable {
     }
 }
 
+let tiger: Tiger = Tiger()
+let bird: Bird = Bird()
+
+tiger.walk()        //Tiger walks
+bird.walk()         //Bird walks
+bird.fly()          //Bird flys
+
+var moveableInstance: Moveable = tiger
+moveableInstance.fly?()         //none response
+
+moveableInstance = bird
+moveableInstance.fly?()         //Bird flys
