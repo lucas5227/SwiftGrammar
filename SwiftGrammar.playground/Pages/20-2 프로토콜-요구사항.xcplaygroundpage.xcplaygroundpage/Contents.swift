@@ -249,13 +249,13 @@ class MiddleSchool: School, Named {
 }
 
 ///실패 가능한 이니셜 라이저 요구를 포함하는 Named 프로토콜과 Named 프로토들을 준수하는 다양한 타입들
-protocol Named {
+protocol Named_2 {
     var name: String { get }
     
     init?(name: String)
 }
 
-struct Animal: Named {
+struct Animal_2: Named_2 {
     var name: String
     
     init(name: String) {
@@ -263,14 +263,14 @@ struct Animal: Named {
     }
 }
 
-struct Pet: Named {
+struct Pet_2: Named_2 {
     var name: String
     init(name: String) {
         self.name = name
     }
 }
 
-class Person: Named {
+class Person_2: Named_2 {
     var name: String
     
     required init(name: String) {
@@ -278,7 +278,7 @@ class Person: Named {
     }
 }
 
-class School: Named {
+class School_2: Named_2 {
     var name: String
     
     required init?(name: String) {
