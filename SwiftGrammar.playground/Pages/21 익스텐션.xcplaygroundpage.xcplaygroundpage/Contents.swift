@@ -24,4 +24,56 @@
  의스텐션을 사용하는 대신 원래 타입을 정의한 소스에 기능을 추가하는 방법도 있겠지만, 외부 라이브러리나 프레임워크를 가져다 사용했다면 원본 소스를 수정하지 못한다. 이처럼 외부에서 가져온 타입에 내가 원하는 기능을 추가하고자 할때 익스텐션을 사용한다. 따로 상속을 받지 않아도 되며, 구조체와 열거형에도 기능을 추가할 수 있으므로 익스텐션은 매우 편리하다. 의스텐션은 모든 타입에 적용할 수 있다. 모든 타입이라함은 구조체, 열거형. 클래스. 프로토콜, 제네리타입등을 뜻한다. 즉, 익스텐션을 통해 모든 타입에 연산 프로퍼티, 메서드, 이니셜라이저, 서브스크립트, 중첨데이터타입등을 추가할 수 있다.
  */
 
+///21.2 익스텐션문법
+/**
+ * extenstion 확장할 타입 이름 {
+ *      //타입에 투가될 새ㅐ로운 기능 구현
+ * }
+ *
+ * extension. 확장할 타입 이름: 프로토콜, 프로토콜2, 프로토콜3 {
+ *          //프로토콜 요구사항 구현
+ * }
+ */
 
+///스위프트 표준 브러리의 Double타입 점의
+/// A double_precition, floating-point value type.
+public struct Double {
+    public init()
+    public init(_ v:  UInt8)
+    public init(_ v:  Int)
+    public init(_ v:  UInt16)
+    public init(_ v:  Int16)
+    public init(_ v:  UInt32)
+    public init(_ v:  Int32)
+    public init(_ v:  UInt64)
+    public init(_ v:  Int64)
+    public init(_ v:  UInt)
+    public init(_ v:  UInt)
+    public init(_ other:  Float)
+    public init?(exactly other:  Float)
+    public init(_ other:  Double)
+    public init?(exactly other:  Double)
+    public init(_ other:  Float80)
+    public init?(exactly other:  Float80)
+}
+
+///스위프트 표준 라이브러리의 Double타입에 구현한 익스텐션의 일부 코드
+extension Double: CustomStringConvertible {
+    /// A textual representation of the vlaue.
+    public var description: String { get }
+}
+
+extension Double: CustomDebugStringConvertible {
+    /// A textual representation of the vlaue, suitable for debugging
+    public var debugDescription: String { get }
+}
+
+extension Double: ExpressibleByIntegerLiteral {
+    /// - Parameter value: The new value
+    public init(integerLiteral value: Int64)
+}
+
+extension Double : Hashable {
+    /// The numver's hash value
+    public var hashValue: Int { get )
+}
