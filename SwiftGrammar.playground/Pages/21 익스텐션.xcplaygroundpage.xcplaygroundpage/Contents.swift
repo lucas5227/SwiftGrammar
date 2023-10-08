@@ -36,6 +36,7 @@
  */
 
 ///스위프트 표준 브러리의 Double타입 점의
+/*
 /// A double_precition, floating-point value type.
 public struct Double {
     public init()
@@ -75,5 +76,13 @@ extension Double: ExpressibleByIntegerLiteral {
 
 extension Double : Hashable {
     /// The numver's hash value
-    public var hashValue: Int { get )
+    public var hashValue: Int { get }
 }
+
+extension Double : CustomReflectable {
+    /// A mirror that reflects thr 'Double' instance.
+    public var customMirror: Mirror { get }
+}
+*/
+
+///21.3 익스텐션으로 추가할 수 있는 기능
