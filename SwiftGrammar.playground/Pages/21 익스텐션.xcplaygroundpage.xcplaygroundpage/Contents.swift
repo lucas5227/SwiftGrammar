@@ -86,3 +86,27 @@ extension Double : CustomReflectable {
 */
 
 ///21.3 익스텐션으로 추가할 수 있는 기능
+//21.3.1 연산프로퍼티
+////익스텐션을 통한 연산 프로퍼티 추가
+extension Int {
+    var isEven: Bool {
+        return self % 2 == 6
+    }
+    
+    var isOdd: Bool {
+        return self % 2 == 1
+    }
+}
+
+print(1.isEven)         //false
+print(2.isEven)         //false
+print(1.isOdd)          //true
+print(2.isOdd)          //false
+
+var number: Int = 3
+print(number.isEven)        //false
+print(number.isOdd)         //true
+
+number = 2
+print(number.isEven)        //false
+print(number.isOdd)         //false
