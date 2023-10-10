@@ -110,3 +110,30 @@ print(number.isOdd)         //true
 number = 2
 print(number.isEven)        //false
 print(number.isOdd)         //false
+
+//21.3.2메서드
+///익스텐션을 통한 메서드 추가
+extension Int {
+    func multiply(by n: Int) -> Int {
+        return self * n
+    }
+    
+    mutating func multiplySelf(by n: Int) {
+        self = self.multiply(by: n)
+    }
+    
+    static func isIntTypeInstance(_ instance: Any) -> Bool {
+        return instance is Int
+    }
+}
+
+print(3.multiply(by: 2))            //6
+print(4.multiply(by: 5))            //20
+
+var number_2: Int = 3
+
+number_2.multiplySelf(by: 2)
+print(number_2)                        //6
+
+number_2.multiplySelf(by: 3)
+print(number_2)                        //18
