@@ -202,3 +202,66 @@ print(myPosition == yourPosition)                       //false
 print(myPosition != yourPosition)                       //true
 
 print(++myPosition)                                     //Position(x: 6, y:6)
+
+///21.3.3 이니셜라이저
+//익스텐션을 통한 이니설라이저 추가
+extension String {
+    init(intTypeNumber: Int) {
+        self = "\(intTypeNumber)"
+    }
+    
+    init(doubleTypeNumber: Double) {
+        self = "\(doubleTypeNumber)"
+    }
+}
+
+let stringFromInt: String = String (intTypeNumber: 100)         //"100"
+let stringFromDouble: String = String(doubleTypeNumber: 100.0)  //"100.0"
+
+class Person {
+    var name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+}
+
+extension Person {
+    convenience init() {
+        self.init(name: "Unknown")
+    }
+}
+
+let someOne: Person = Person()
+print(someOne.name) //"Unknown"
+
+///익스텐션을 동한 초기화 위임 이니셜라이저 추가
+struct Size {
+    var width: Double  = 0.0
+    var height: Double  = 0.0
+}
+
+struct Point {
+    var x: Double = 0.0
+    var y: Double = 0.0
+}
+
+struct Rect {
+    var origin: Point = Point()
+    var size: Size = Size()
+}
+
+let defaultRect: Rect = Rect()
+let memverwiseRect: Rect = Rect(origin: Point(x: 2.0, y: 2.0),
+                                size: Size(width: 5.0, height: 5.0))
+
+extension Rect {
+    init(center: Point, size: Size) {
+        let originX: Double = center.x - (size.width / 2)
+        let originY: Double = center.y - (size.width / 2)
+        self.init(origin: Point(x: originX, y: originY), size: size)
+    }
+}
+
+let centerRect: Rect = Rect(center: Point(x: 4.0, y: 4.0),
+                            size: Size(width: 3.0, height: 3.0))
