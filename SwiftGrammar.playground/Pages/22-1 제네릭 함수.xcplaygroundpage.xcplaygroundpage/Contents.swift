@@ -29,5 +29,4 @@ public struct Array<Element> : RandomAccessCollection, MutableCollection {
     //중략...
     public func reduce<Result>(_ initialResult: Result, _ nextPartialResult: (Result, Element) throws -> Result) rethrows -> Result
 }
- 
 */
