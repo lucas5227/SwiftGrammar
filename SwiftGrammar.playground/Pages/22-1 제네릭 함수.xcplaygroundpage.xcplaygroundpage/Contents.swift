@@ -30,4 +30,3 @@ public struct Array<Element> : RandomAccessCollection, MutableCollection {
     public func reduce<Result>(_ initialResult: Result, _ nextPartialResult: (Result, Element) throws -> Result) rethrows -> Result
 }
 */
-
