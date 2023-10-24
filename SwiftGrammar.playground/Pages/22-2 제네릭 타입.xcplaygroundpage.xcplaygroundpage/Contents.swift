@@ -33,3 +33,35 @@ print(integerStack.items)           //[3, 2, 3, 5]
 
 integerStack.pop()
 print(integerStack.items)           //[3, 2, 3]
+
+integerStack.pop()
+print(integerStack.items)           //[3, 2]
+
+integerStack.pop()
+print(integerStack.items)           //[3]
+
+integerStack.pop()
+print(integerStack.items)           //[]
+
+///제네릭을 사용한 Stack 구조체 타입
+struct Stack<Element> {
+    var items = [Element]()
+    mutating func push(_ item: Element) {
+        items.append(item)
+    }
+    
+    mutating func pop() -> Element {
+        return items.removeLast()
+    }
+}
+
+var doubleStack: Stack<Double> = Stack<Double>()
+
+doubleStack.push(1.0)
+print(doubleStack.items)            //[1.0]
+doubleStack.push(2.0)
+print(doubleStack.items)            //[1.0, 2.0]
+doubleStack.pop()
+print(doubleStack.items)            //[1.0]
+
+var stringStack: Stack<String>
