@@ -24,3 +24,12 @@ struct Stack<Element: Hashable> {
     // 구조체 구현
 }
 
+///제네릭 타입 제약 추가
+/*
+ T는 BinaryInteger 프로토콜을 준수하고, FloatingPoint 프로토콜도 준수하는 타입만 사용 할수 있다. 우리가 특별히 사용자 정의 타입을 만들어 구현하지 않는 한, 저 조건에맞는 기본 타입은 없다. 결국 이런 상황에서는 앞서 말했듯 합수를 중복 정의하거나 새로운(프로토콜)타입을 정의해서 사용하는등 다른 방법을 사용해야겠습니다. 위에 사용된 where절에 대해서는 26장에 서 상세히 디룬다.
+ 타입제약을 실제로 사용할 법한 예를 생각해보면 뺄셈정도를 생각해 볼 수 있다.
+ */
+func swapTwoValues<T: BinaryInteger>(_ a: inout T, _ b: inout T) where T:
+FloatingPoint {
+    //함수 구현
+}
