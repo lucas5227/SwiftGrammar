@@ -35,6 +35,9 @@ FloatingPoint {
 }
 
 /// substractTwoValue 힘수의 잘못된 구현
+/*
+ 이번 코드에서 타입 매개변수인 T의 타입을 BinaryInteger 프로토콜을 준수하는 타입으로 한정해두니 뺄셈 연산이 가능하게 되었다. 이처럼 타입 제약은 합수 내부에서 실행 해야 할 연산에 따라 적절한 타입을 전달 받을 수. 있도록 제약을 둘 수. 있다. 다시 [ 22-1 코드의 **연산자를 보면 타입 매개변수(T)가 BinaryInteger라는 특정 프로토콜을 준수할 때 제네릭 함수인 연산자를 사용 할수 있도록 타입을 제약 해준 것이다.
+ */
 func substractTwoValue<T>(_ a: T, _ b: T) -> T {
     return a - b
 }
