@@ -43,3 +43,6 @@ func substractTwoValue<T: BinaryInteger>(_ a: T, _ b: T) -> T {
 }
 
 ///substractTwoValue함수의 구현
+func substractTwoValue2<T:BinaryInteger>(_ a :T ,_ b:T ) -> T {
+    return a - b
+}
