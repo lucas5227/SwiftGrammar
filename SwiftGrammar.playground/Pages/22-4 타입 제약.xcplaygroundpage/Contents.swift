@@ -46,3 +46,5 @@ func substractTwoValue<T: BinaryInteger>(_ a: T, _ b: T) -> T {
 func substractTwoValue2<T:BinaryInteger>(_ a :T ,_ b:T ) -> T {
     return a - b
 }
+
+/// makeDictionanWithTwoValue 함수의 구현
