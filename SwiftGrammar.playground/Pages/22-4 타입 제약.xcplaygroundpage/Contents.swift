@@ -48,3 +48,7 @@ func substractTwoValue2<T:BinaryInteger>(_ a :T ,_ b:T ) -> T {
 }
 
 /// makeDictionanWithTwoValue 함수의 구현
+func makerDictionaryWithTwoValue<Key: Hashable, Value>(key: Key, value: Value) -> Dictionary<Key, Value> {
+    let dictionary: Dictionary<Key, Value> = [key:value]
+    return dictionary
+}
