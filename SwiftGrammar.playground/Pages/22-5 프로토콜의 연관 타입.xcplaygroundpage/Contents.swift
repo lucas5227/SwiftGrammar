@@ -16,3 +16,20 @@ protocol Container {
     mutating func append(_ item: ItemType)
     subscript(i: Int) -> ItemType { get }
 }
+
+///MyContainer 클래스 정의
+class MyContainer: Container {
+    var items: Array<Int> = Array<Int>()
+    
+    var count: Int {
+        return items.count
+    }
+    
+    func append(_ item: Int) {
+        item.append(item)
+    }
+    
+    subscript(i: Int) -> Int {
+        return items[i]
+    }
+}
