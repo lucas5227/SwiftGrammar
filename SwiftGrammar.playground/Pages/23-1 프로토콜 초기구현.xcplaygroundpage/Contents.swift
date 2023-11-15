@@ -109,3 +109,10 @@ class Mail_2: Sendable, Receiveable {
 }
 let mailInstance: Mail_2 = Mail_2()
 mailInstance.send(data: "Hello")
+
+///제네릭, 프로토콜, 익스텐션을 통한 재사용 가능한 코드 작성
+protocol SelfPrintable {
+    func printSelf()
+}
+
+
