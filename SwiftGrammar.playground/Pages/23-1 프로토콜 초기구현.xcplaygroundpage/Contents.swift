@@ -98,3 +98,14 @@ Message.isSendableInstance(myPhoneMessage)      //true
 Message.isSendableInstance(yourPhoneMessage)       //false
 Mail.isSendableInstance(myPhoneMessage)             //true
 Mail.isSendableInstance(myMail)                     //true
+
+///익스텐션을 통해 구현된 메서드 재정의
+class Mail_2: Sendable, Receiveable {
+    var to: Receiveable?
+    
+    func send(data: Any) {
+        print("Mail의 send 메서드는 재정의되었습니다.")
+    }
+}
+let mailInstance: Mail_2 = Mail_2()
+mailInstance.send(data: "Hello")
