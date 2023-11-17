@@ -115,4 +115,24 @@ protocol SelfPrintable {
     func printSelf()
 }
 
+extension SelfPrintable where Self: Container {
+    func printSelf() {
+        print(items)
+    }
+}
 
+protocol Container: SelfPrintable {
+    associatedtype ItemType
+    
+    var items: [ItemType] { get set }
+    var count: Int { get }
+    
+    mutating func append(item: ItemType)
+    subscript(i: Int) -> ItemType { get }
+}
+
+extension Container {
+    mutating func append(item: ItemType){
+        items.append(item)
+    }
+}
