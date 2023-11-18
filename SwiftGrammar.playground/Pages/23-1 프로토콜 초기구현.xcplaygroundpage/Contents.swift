@@ -135,4 +135,91 @@ extension Container {
     mutating func append(item: ItemType){
         items.append(item)
     }
+    
+    var count: Int {
+        return items.count
+    }
+    
+    subscript(i: Int) -> ItemType {
+        return items[i]
+    }
 }
+
+protocol Popable: Container {
+    mutating func pop() -> ItemType?
+    mutating func push(_ item: ItemType)
+}
+
+extension Popable {
+    mutating func pop() -> ItemType? {
+        return items.removeLast()
+    }
+    
+    mutating func push(_ item: ItemType) {
+        self.append(item: item)
+    }
+}
+
+protocol Insertable: Container   {
+    mutating func delete() -> ItemType?
+    mutating func insert(_ item: ItemType)
+}
+
+    extension Insertable {
+        mutating func delete() -> ItemType? {
+            return items.removeFirst()
+        }
+        
+        mutating func insert(_ item: ItemType) {
+            self.append(item: item)
+        }
+}
+
+struct Stack<Element>: Popable {
+    var items: [Element] = [Element]()
+}
+
+struct Queue<Element>: Insertable {
+    var items: [Element] = [Element]()
+}
+
+var myIntStack: Stack<Int> = Stack<Int>()
+var myStringStack: Stack<String> = Stack<String>()
+var myIntQueue: Queue<Int> = Queue<Int>()
+var myStringQueue: Queue<String> = Queue<String>()
+
+myIntStack.push(3)
+myIntStack.printSelf()          //[3]
+
+myIntStack.push(2)
+myIntStack.printSelf()          //[3, 2]
+
+myIntStack.pop()
+myIntStack.printSelf()          //[3]
+
+myStringStack.push("A")
+myIntStack.printSelf()          //["A"]
+
+myStringStack.push("B")
+myStringStack.printSelf()       //["A", "B"]
+
+myStringStack.pop()             //"B"
+myStringStack.printSelf()       //["A"]
+
+myIntQueue.insert(3)
+myIntQueue.printSelf()          //[3]
+
+myIntQueue.insert(2)
+myIntQueue.printSelf()          //[3, 2]
+
+myIntQueue.delete()             //3
+myIntQueue.printSelf()          //[2]
+
+myStringQueue.insert("A")
+myStringQueue.printSelf()       //["A"]
+
+myStringQueue.insert("B")
+myStringQueue.printSelf()       //["A", "B"]
+
+myStringQueue.delete()
+myStringQueue.printSelf()       //["B"]
