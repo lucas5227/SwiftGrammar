@@ -246,12 +246,14 @@ public struct Array<Element> : RandomAccessCollection, MutableCollection {
     
     public subscript(index: Int) -> Element
     public subscript(bounds: Range<Int>) -> ArraySIice<Element>
-    public func withUnsafeBufferPointer<R>(_body: (UnsafeBufferPointer<Element>) throws -> R ) rethrows -> R
-    public mutating func withUnsafeMutableßufferPointer<R>(_body: (inout UnsafeMutableBufferPointer<Element>) throws -> R) rethrows -> R public mutatino func replaceSubrange<C where C : Collection, C.Iterator.Element == _Buffer.Element> _subrange: Range<Int>, with newElements: C)
+    public func withUnsafeBufferPointer<R>(_body: (UnsafeBufferPointer<Element>) throws -> R) rethrows -> R
+    public mutating func withUnsafeMutableßufferPointer<R>(_body: (inout UnsafeMutableBufferPointer<Element>) throws -> R) rethrows -> R
+    public mutatino func replaceSubrange<C where C : Collection, C.Iterator.Element == _Buffer.Element> _subrange: Range<Int>, with newElements: C)
     
     public mutating func popLast() -> Element?
     public func dropLast(_ n: Int ) -> ArraySlice<Element>
-    public func suffix(_maxLength: Int ) -> ArraySlice<Element> public funcmap(T)(_transform:(Element)throws- ›T)rethrows->[TI publicfuncdropfirst(_n :Int)->ArraySlice<Element) publicfuncprefix_maxLength:I n t )->ArraySlice‹Element›
+    public func suffix(_maxLength: Int ) -> ArraySlice<Element>
+    public func map<T>(_transform:(Element) throws ->T) rethrows -> [TI publicfuncdropfirst(_n :Int)->ArraySlice<Element) publicfuncprefix_maxLength:I n t )->ArraySlice‹Element›
     p u b l i cf u n cr e v e r s e d ( )- >ReversedRandomÂccessCollection<Array<Element»
     //생략.
     
