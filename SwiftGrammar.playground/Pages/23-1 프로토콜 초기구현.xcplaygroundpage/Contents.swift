@@ -260,5 +260,6 @@ public struct Array<Element> : RandomAccessCollection, MutableCollection {
     //중략...
     public func reversed() -> ReversedRandomAccessCollection<ArrayElement>>
     //생략..
+ 
 }
 */
