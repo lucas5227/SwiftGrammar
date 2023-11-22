@@ -228,6 +228,7 @@ myStringQueue.printSelf()       //["B"]
 
 
 ///스위프트 표준 라이브러리의 Array정의
+/*
 public struct Array<Element> : RandomAccessCollection, MutableCollection {
     public typealias Index = Int
     public typealias Iterator = IndexingIterator<[Element]>
@@ -253,8 +254,12 @@ public struct Array<Element> : RandomAccessCollection, MutableCollection {
     public mutating func popLast() -> Element?
     public func dropLast(_ n: Int ) -> ArraySlice<Element>
     public func suffix(_maxLength: Int ) -> ArraySlice<Element>
-    public func map<T>(_transform:(Element) throws ->T) rethrows -> [TI publicfuncdropfirst(_n :Int)->ArraySlice<Element) publicfuncprefix_maxLength:I n t )->ArraySlice‹Element›
-    p u b l i cf u n cr e v e r s e d ( )- >ReversedRandomÂccessCollection<Array<Element»
-    //생략.
+    public func map<T>(_transform:(Element) throws ->T) rethrows -> [T]
+    public func dropfirst(_ n: Int) -> ArraySlice<Element>
+    public func prefix(_ maxLength: Int) -> ArraySlice<Element>
+    //중략...
+    public func reversed() -> ReversedRandomAccessCollection<ArrayElement>>
+    //생략..
     
 }
+*/
