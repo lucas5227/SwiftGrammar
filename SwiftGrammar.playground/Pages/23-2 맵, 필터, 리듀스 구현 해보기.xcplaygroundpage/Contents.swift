@@ -8,6 +8,7 @@ let mappedItems: Array<Int> = items.map { (item: Int) -> Int in return item * 10
 
 print(mappedItems)          //[10, 20, 30]
 
+/*
 ///Stack 구조체의 맵 메서드
 //Stack 구조체의 맵 메서드
 func map<T>(transform: (Element) -> T) -> Stack<T> {
@@ -28,3 +29,4 @@ myIntStack.push(2)
 myIntStack.printSelf()          //[1, 5, 2]
 var myStrStack: Stack<String> = myIntStack.map{ "\($0)" }
 myStrStack.printSelf()          //["1", "5", "2"]
+*/
