@@ -33,3 +33,4 @@ print(student.job)                  //student
 print(student.school)               //middle
 
 ///같은 이름의 중첩 데이티 타입 구현
+///
