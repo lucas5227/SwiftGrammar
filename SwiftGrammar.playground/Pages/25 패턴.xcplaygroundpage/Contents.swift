@@ -46,8 +46,30 @@ for _ in 0..<2 {
 
 
 """
-/// 25-1 식별자 패턴 Identifier Pattern
+/// 25-2 식별자 패턴 Identifier Pattern
 식별자패턴은 변수 또는 상수의 이름에 알맞는 값을 어떤 값과 매치시키는 패턴을 말한다.
 """
 ///식별자 채턴의 사용
 let someValue: Int = 52;
+
+
+"""
+/// 25-3 바인딩 패턴 Value-Binding Pattern
+값 바인딩 패턴은 변수 또는 상수의 이름에 매치된 값을 바인딩 하는 것이다. 값 바인딩 패틴의 일종인 식별자 패턴은 매칭되는 값을 새로운 이름의 변수또는 상수에 바인당한다. 예를 들어 튜플의 요소를 해체하여 그에 대응하는 식별자 패턴에 각각의 요소값을 바인딩하는 것이며 주고 switch 구문에서 많이 사용한다.
+"""
+///값 바인딩 패턴의 사용
+let lucas2 = ("lucas", 99, "Male")
+
+switch lucas2 {
+    //name, age, gende를 lucas의 가각의 요소와 바인딩 한다.
+    case let (name, age, gender) : print("Name: \(name), Age: \(age), Gender: \(gender)")
+} //Name: lucas, Age:99, Gender: Male
+
+switch lucas2 {
+    case (let name, let age, let gender) : print("Name: \(name), Age: \(age), Gender: \(gender)")
+} //Name: lucas, Age:99, Gender: Male
+
+switch lucas2 {
+    //값 바인딩 채턴은 와일드카드 채턴과 결합하여 우용하게 사용될 수도 있다.
+    case let (let name, _, let gender) : print("Name: \(name), Age: \(age), Gender: \(gender)")
+} //Name: lucas, Age:99, Gender: Male
