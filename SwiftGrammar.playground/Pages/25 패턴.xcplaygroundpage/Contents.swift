@@ -106,3 +106,80 @@ for (x, _) in points {
 //1
 //2
 //2
+
+"""
+/// 열거형 케이스 패턴 Enumeration Case Pattern
+열거형 케이스 패턴은 값을 열거형 타입의 Case와 매치시킨다. 열거형 케이스 패턴은 switch구문의 case레이블과 while, guard, for-in 구문의 case조건 에서 볼 수. 있다. 만약 연관값이 있는 열겨형 케이스와 매치하려고 한다면 열거형 케이스 패턴에는 반드시 튜플 패턴이 함께 해야한다.
+"""
+
+///열거형 케이스 패턴의 사용
+let someValue_2: Int = 30
+
+if case 0...100 = someValue_2 {
+    print("0 <= \(someValue_2) <= 100")
+}           //0 <= 30 <= 100
+
+let anotherValue: String = "ABC"
+
+if case "ABC" = anotherValue {
+    print(anotherValue)
+}           //ABC
+
+enum MainDish {
+    case pasta(taste: String)
+    case pizza(dough: String, topping: String)
+    case chicken(withSause: Bool)
+    case rice
+}
+
+var dishes: [MainDish] = []
+
+var dinner: MainDish = .pasta(taste: "크림")  //크림 파스타
+dishes.append(dinner)
+
+if case .pasta(let taste) = dinner {
+    print("\(taste) 파스타")
+}           //크림 파스타
+
+dinner = .pizza(dough: "치즈크러스트", topping: "불고기")            //치즈크러스트 불고기 피자 만들기
+dishes.append(dinner)
+
+func whatIsThis(dish: MainDish) {
+    guard case .pizza(let dough, let topping) = dinner else {
+        print("Its not a Pizza")
+        return
+    }
+    
+    print("\(dough) \(topping) 피자")
+}
+whatIsThis(dish: dinner)            //치즈크러스트 불고기 피자
+
+dinner = .chicken(withSause: true)          //양념 통닭 만들기
+dishes.append(dinner)
+
+while case .chicken(let sauced) = dinner {
+    print("\(sauced ? "양념" : "후라이드)") 통닭")
+    break
+}           //양념 통닭
+
+dinner = .rice          //밥
+dishes.append(dinner)
+
+if case .rice = dinner {
+    print("오늘 저녁은 밥입니다.")
+}           //오늘 저녁은 밥입니다.
+
+for dish in dishes {
+    switch dish {
+    case let .pasta(taste): print(taste)
+    case let .pizza(dough, topping): print(dough, topping)
+    case let .chicken(withSause): print(sauced ? "양념" : "후라이드")
+    case let .rice: print("Just 쌀")
+    }
+}
+/*
+ 크림
+ 치즈크러스트 불고기
+ 양념
+ Just 쌀
+ */
