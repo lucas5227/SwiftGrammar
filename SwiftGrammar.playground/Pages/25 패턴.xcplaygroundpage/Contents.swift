@@ -71,5 +71,38 @@ switch lucas2 {
 
 switch lucas2 {
     //값 바인딩 채턴은 와일드카드 채턴과 결합하여 우용하게 사용될 수도 있다.
-    case let (let name, _, let gender) : print("Name: \(name), Age: \(age), Gender: \(gender)")
+    case (let name, _, let gender) : print("Name: \(name), Age: \(age), Gender: \(gender)")
 } //Name: lucas, Age:99, Gender: Male
+
+"""
+///25.4 튜플 패턴 Tuple Pattern
+튜플 패턴은 소괄호(()) 내에 쉼표로 분리하는 리스트이다. 튜플 패턴은 그에 사ㅇ응하는 튜플 타입과 값을 배치합니다. 예를 들어 let (x,t): (Int, Int) = (1, 2)와 같이 상수를 선언한다면 (x, y): (Int: Int) = (1, 2)와 같이 상수를 선언한다면 (x, y): (Int, Int)라고 사용된 튜플 패턴은 요소가 모두 Int 타입인 튜플하고만 매치된다는 뜻입니다. 튜플 패턴을 for-in 구문 또는 변수나 상수 선언에서 사용한다면 와일ㄷ카드 패턴, 식별자 채턴, 옵셔널 채턴, 또다른 튜플 패턴 등을 함께 사용할 수 있다.
+"""
+///튜플 패턴의 사용
+let (a): Int = 2
+print(a)            //2
+
+let (x, y): (Int, Int) = (1, 2)
+print(x)            //1
+print(y)            //2
+
+let name: String = "Jung"
+let age: Int = 99
+let gender: String? = "Male"
+
+switch (name, age, gender) {
+case ("Jung", _, _): print("Hello Jung!!!")
+case (_, _, "Male"?): print("Who are tou man?")
+default: print("I don't know who you are")
+}   //Hello Jung!!!
+
+let points: [(Int, Int)] = [ (0, 0), (1, 0), (1, 1), (2, 0), (2, 1)]
+
+for (x, _) in points {
+    print(x)
+}
+//0
+//1
+//1
+//2
+//2
