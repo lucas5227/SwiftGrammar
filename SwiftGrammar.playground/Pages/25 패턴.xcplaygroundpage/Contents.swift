@@ -173,7 +173,7 @@ for dish in dishes {
     switch dish {
     case let .pasta(taste): print(taste)
     case let .pizza(dough, topping): print(dough, topping)
-    case let .chicken(withSause): print(sauced ? "양념" : "후라이드")
+    case let .chicken(sauced): print(sauced ? "양념" : "후라이드")
     case let .rice: print("Just 쌀")
     }
 }
