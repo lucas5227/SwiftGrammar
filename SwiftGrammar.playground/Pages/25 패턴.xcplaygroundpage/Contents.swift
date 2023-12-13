@@ -263,7 +263,7 @@ default: print("point (\(point.0), \(point.1))")
 
 //String 타입과 Int타입이 매치될 수 있도록 ~= 연산자를 정의한다.
 func ~= (pattern: String, value: Int) -> Bool {
-    reutnr pattern == "\(value)"
+    return pattern == "\(value)"
 }
 
 point = (0, 0)
@@ -279,13 +279,13 @@ struct Person {
     var age: Int
 }
 
-let lingo: Person = Person(name: "Lingo", age: 99)
-func ~= (pattern: String, value: Person) -> Bool {
+let lingo: Person_2 = Person_2(name: "Lingo", age: 99)
+func ~= (pattern: String, value: Person_2) -> Bool {
     return pattern ~= value.name
 }
 
 switch lingo {
-case Person(name: "Lingo", age: 99): print("Same Person!!")
+case Person_2(name: "Lingo", age: 99): print("Same Person!!")
 case "Lingo": print("Hello Lingo!!")
 default: print("I don't know who you are")
 }           // Same Person!!
@@ -299,22 +299,26 @@ protocol Personalize {
     var age: Int { get }
 }
 
-struct Person: Personalize {
+struct Person_2: Personalize {
     var name: String
     var age: Int
 }
 
-let star: Person = Person(name: "Star", age: 99)
+let star: Person_2 = Person_2(name: "Star", age: 99)
 
 /*이제 필요 없다. 제네릭을 이용하여 구현
-func ~= (pattern: Person, value: Person) -> Bool {
+ func ~= (pattern: String, value: Perso_2) -> Bool {
+     return == value.name
+ }
+ 
+ func ~= (pattern: Person, value: Person) -> Bool {
     return pattern.name == value.nname && pattern.age == value.age
-}
+ }
 */
 
 //제네릭을 사용하여 패턴 연산자를 정의
 func ~=  <T: Personalize>(pattern: String, value: T) -> Bool {
-    return pattern === value.name
+    return pattern == value.name
 }
 
 func ~= <T: Personalize>(pattern: T, value: T) -> Bool {
@@ -323,7 +327,7 @@ func ~= <T: Personalize>(pattern: T, value: T) -> Bool {
 
 //기존 패턴 연산자가 없더라도 제네릭 패턴 연산자로 똑같이 사용할 수 있다.
 switch star {
-case Person(name: "Star", age: 99): print("Same Person!!")
+case Person_2(name: "Star", age: 99): print("Same Person!!")
 case "Star": print("Hello Star!!")
 default: print("I don't know who you are")
 }           //Same Person()
@@ -341,9 +345,21 @@ func young<T: Personalize>(value: T) -> Bool {
 
 switch star {
     //패턴결합을 하면 isNamed("Jung")(star)와 같은 효과를 본다.
+case young: print("\(star.name) is young")
+default: print("\(star.name) is ild")
+}           //Star is old
+
+//패턴에 사용할 제네릭 함수
+func isNamed<T: Personalize>(_ pattern: String) -> ((T) -> Bool) {
+    return { (value: T) -> Bool in value.name == pattern }
+    //패턴과 값을 클로저를 반환한다.
+}
+
+switch star {
+    //패턴결합을 하면 isNamed("Jung")(star)와 같은 효과를 본다.
 case isNamed("Jung"): print("He is Jung")
 default: print("Another person")
-}           // Another person
+}
 
 //연산자가 함수라는 점을 생각해보면 이런 방식으로도 구현할 수 있다.
 prefix operator ==?
