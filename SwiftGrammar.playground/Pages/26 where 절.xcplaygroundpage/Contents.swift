@@ -118,5 +118,52 @@ for thing in things {
 //an (x, y) point at 3.0, 5.0
 //Hello, Michael
 
+///표현 패턴과 where 절의 활용
+var point: (Int, Int) = (1, 2)
 
+switch point {
+case (0, 0): print("일정")
+      case (-2...2, -2...2) where point.0 != 1: print("(\(point.0), \(point.1))은 원점과 가깝습니다.")
+      default: print("point (\(point.0), \(point.1))")
+}           //point (1, 2)
 
+///where 절을 활용한 프로토콜 익스텐션의 프로토콜 준수 제약 추가
+protocol SelfPrintable {
+    func printSelf()
+}
+
+struct Person: SelfPrintable { }
+
+extension Int: SelfPrintable { }
+extension UInt: SelfPrintable { }
+extension String: SelfPrintable { }
+extension Double: SelfPrintable { }
+
+extension SelfPrintable where Self: FixedWidthInteger, Self: SignedInteger {
+    func printSelf() {
+        print("FixedWidthInteger와 SignedInteger을 준수하면서 SelfPrintable을 준수하는 차입 \(type(of:self))")
+    }
+}
+
+extension SelfPrintable where Self: CustomStringConvertible {
+    func printSelf() {
+        print("CustromStringConvertalbe을 준수하면서 SlefPrintable을 준수하는 타입 \(type(of: self))")
+    }
+}
+extension SelfPrintable {
+    func printSelf() {
+        print("그 외 SelfPrintable을 준수하는 타입 \(type(of: self))")
+    }
+}
+
+//FixedWidthInteger와 SignedInteger을 준수하면서 SelfPrintable을 준수하는 타입 Int
+Int(-8).printSelf()
+
+//CustomStringConbertible을 준수하면서 SelfPrintable을 준수하는 타입 String
+String("lucas").printSelf()
+
+//CustomStringConvertable을 준수하면서 SelfPrintable을 준수하는 타입 Double
+Double(8.0).printSelf()
+
+//그 외 SelfPrintable을 준수하는 타입 Person
+Person().printSelf()
