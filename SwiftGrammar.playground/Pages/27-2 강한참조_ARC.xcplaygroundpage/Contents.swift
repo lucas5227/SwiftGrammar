@@ -31,3 +31,14 @@ regerence1 = nil         //인스턴스의 참조 횟수: 2
 regerence2 = nil         //인스턴스의 참조 횟수: 1
 regerence3 = nil         //인스턴스의 참조 횟수: 0
 //lucas is being deinitialized
+
+///강한참조 지여변수(상수)의 참조 횟수 확인
+func foo() {
+    let lucas: Person = Person(name: "lucas")            //lucas is being initialized
+    //인스턴스 참조 횟수 : 1
+    
+    //함수 종료 시점
+    //인스턴스의 탐조 횟수 : 0
+    //lucas is being deinitialized
+}
+foo()
