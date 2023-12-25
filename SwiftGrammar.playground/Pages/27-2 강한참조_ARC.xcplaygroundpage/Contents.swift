@@ -42,3 +42,19 @@ func foo() {
     //lucas is being deinitialized
 }
 foo()
+
+var globalReference: Person?
+
+func foo_2() {
+    let lucas: Person = Person(name: "lucas")            //lucas is being initialized
+    //인스턴스 참조 횟수 : 1
+    
+    globalReference = lucas //인스턴스 참조 횟수 : 2
+    
+    //함수 종료 시점
+    //인스턴스의 참조 횟수 : 1
+}
+
+"""
+/// 27-2-1 강한참조 순황 문제
+"""
