@@ -56,5 +56,67 @@ func foo_2() {
 }
 
 """
-/// 27-2-1 강한참조 순황 문제
+/// 27-2-1 강한참조 순황 문제 Strong Reference Cycle
+복합적으로 강한 참조가 일어나는 상황에서 강한 참조의 규칙을 모르고 사용하게 되면 문제가 발생할 수 있다. 인스턴스끼리 서로가 서로를 강한 참조할 때를 대표적인 예로 들
+ 수 있다. 이를 강한참조순환이라고 한다.
 """
+///강한참조 순환 문제
+class Person_2 {
+    let name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    var room: Room?
+    
+    deinit {
+        print("\(name) is being deinitialized")
+    }
+}
+
+class Room {
+    let number: String
+    
+    init(number: String) {
+        self.number = number
+    }
+    
+    var host: Person_2?
+    
+    deinit {
+        print("Room \(number) is being deinitialized")
+    }
+}
+
+var lucas: Person_2? = Person_2(name: "lucas")          //Person 인스턴스의 참조 횟수 : 1
+var room: Room? = Room(number: "638")          //Room 인스턴스의 참조 횟수 : 1
+
+room?.host = lucas          //Person 인스턴스의 참조 횟수 : 2
+lucas?.room = room          //Room 인스턴스의 참조 횟수 : 2
+
+
+
+lucas = nil          //Person 인스턴스의 참조 횟수 : 1
+room = nil          //Room 인스턴스의 참조 횟수 : 1
+
+//Person 인스턴스를 탐조할 방법 상실 - 메모리에 잔존
+//Room 인스턴스를 탐조할 방법 상실 - 메모리에 잔존
+
+
+
+///강한참조 순한 문제를 수동으로 해결
+var lucas_2: Person_2? = Person_2(name: "lucas")          //Person 인스턴스의 참조 횟수 : 1
+var room_2: Room? = Room(number: "638")          //Room 인스턴스의 참조 횟수 : 1
+
+room_2?.host = lucas_2          //Person 인스턴스의 참조 횟수 : 2
+lucas_2?.host = room_2          //Room 인스턴스의 참조 횟수 : 2
+
+lucas_2?.room = nil          //Room 인스턴스의 참조 횟수 : 2
+lucas = nil         //Person 인스턴스의 참조 횟수 : 2
+
+room_2?.host = nil          //Person 인스턴스의 참조 횟수 : 0
+//lucas is being deinitialized
+
+room_2 = nil          //Person 인스턴스의 참조 횟수 : 0
+//Room 638 is being deinitialized
