@@ -37,3 +37,4 @@ class Person {
 var lucas: Person? = Person(name: "lucas", hobby: "eating")
 print(lucas?.introduce())           //"My name is lucas. My hobby is eating."
 lucas = nil
+
