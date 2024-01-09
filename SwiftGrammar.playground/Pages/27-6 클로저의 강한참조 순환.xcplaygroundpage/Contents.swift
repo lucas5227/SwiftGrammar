@@ -4,3 +4,36 @@
 """
 
 ///클로저의 강한참조 순환문제
+class Person {
+    let name: String
+    let hobby: String?
+
+    lazy var introduce: () -> String = {
+    
+        var introduction: String = "My name is \(self.name)."
+        
+        guard let hobby = self.hobby else {
+            
+            return introduction
+        }
+        
+        introduction += " "
+        introduction += "My hobby is \(hobby)."
+        return introduction
+     }
+    
+    init(name:String, hobby:String? = nil) {
+        self.name = name
+        self.hobby = hobby
+        
+    }
+    
+    deinit {
+        print("\(name) is being deinitialized")
+        
+    }
+}
+
+var lucas: Person? = Person(name: "lucas", hobby: "eating")
+print(lucas?.introduce())           //"My name is lucas. My hobby is eating."
+lucas = nil
