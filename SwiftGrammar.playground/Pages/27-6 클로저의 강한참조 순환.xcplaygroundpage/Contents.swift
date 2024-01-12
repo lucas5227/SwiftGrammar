@@ -44,6 +44,10 @@ lucas = nil
 """
 
 /// 회득목록을 통한 값 획득
+class SimpleClass {
+    var value: Int = 0
+}
+
 var a = 0
 var b = 0
 let closure = { [a] in
@@ -56,3 +60,32 @@ b = 10
 closure()           // 0 10
 print(b)            // 20
 
+///참조타입의 획득목톡 동작
+var x = SimpleClass()
+var y = SimpleClass()
+
+let clouser = { [x] in
+    print(x.value, y.value)
+}
+
+x.value = 10
+y.value = 10
+
+closure()           //10, 10
+
+///획득목록의 획득종류 명시
+class SimpleClass_2 {
+var value: Int = 0
+}
+var x_2: SimpleClass_2? = SimpleClass_2()
+var y_2 = SimpleClass_2()
+
+let closure_2 = { [weak x_2, unowned y_2] in
+    print(x_2?.value, y_2.value)
+}
+
+
+x_2 = nil
+y_2.value = 10
+
+clouser_2()           //nil 10
