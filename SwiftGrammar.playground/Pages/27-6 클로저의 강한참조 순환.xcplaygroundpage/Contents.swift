@@ -89,3 +89,5 @@ x_2 = nil
 y_2.value = 10
 
 clouser_2()           //nil 10
+
+///
