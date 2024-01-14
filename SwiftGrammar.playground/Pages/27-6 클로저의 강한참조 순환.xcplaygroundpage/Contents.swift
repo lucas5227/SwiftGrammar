@@ -133,3 +133,47 @@ lucas_3 = nil           //lucas_3 is being deinitialized
 
 //print(hana?.introduce())             //err! 이미 메모리에서 해제된 인스턴스(lucas_3) 참조시도
 
+///획득목록의 약한참조를 통한 차우 접근 문제 방지
+class Person_3 {
+    let name: String
+    let hobby: String?
+    
+    lazy var introduce: () -> String = { [weak self] in
+        // 'self'를 사용한 이유는 예약어 문제 ???
+        guard let self = self else {
+            return "원래의 참조 인스턴스가 없어짐."
+        }
+        
+        var introduction: String = "My name is \(self.name)"
+        
+        guard let hobby = self.hobby else {
+            return introduction
+        }
+        
+        introduction += " "
+        introduction += "My hobby is \(hobby)"
+        
+        return introduction
+    }
+    
+    init(name: String, hobby: String? = nil) {
+        self.name = name
+        self.hobby = hobby
+    }
+    
+    deinit {
+        print("\(name) is being deinitialized")
+    }
+}
+
+var lucas_4: Person_3? = Person_3(name: "lucas", hobby: "eating")
+var hana_2: Person_3? = Person_3(name: "hana", hobby: "playing guitar")
+
+// hana의 introduce 프로퍼티에 lucas_4의 introduce 프로퍼티의 참조할당
+hana_2?.introduce = lucas_4?.introduce ?? { " " }
+
+// 아직 yagom이 참조하는 인스턴스가 해제되지 않았기 때문에
+// 클로저 내부에서 self (yagom 변수가 참조하는 인스턴스) 참조 가능
+print(hana_2?.introduce())           // My name is lucas. My hobby is eating.
+lucas_4 = nil           // lucas is being deinitialized
+print(hana_2?.introduce())          // 원래의 참조 인스턴스가 없어짐.
