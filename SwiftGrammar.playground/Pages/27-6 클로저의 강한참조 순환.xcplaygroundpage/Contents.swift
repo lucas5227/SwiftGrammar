@@ -75,8 +75,9 @@ closure()           //10, 10
 
 ///획득목록의 획득종류 명시
 class SimpleClass_2 {
-var value: Int = 0
+    var value: Int = 0
 }
+
 var x_2: SimpleClass_2? = SimpleClass_2()
 var y_2 = SimpleClass_2()
 
@@ -84,10 +85,7 @@ let closure_2 = { [weak x_2, unowned y_2] in
     print(x_2?.value, y_2.value)
 }
 
-
 x_2 = nil
 y_2.value = 10
 
-clouser_2()           //nil 10
-
-///
+closure_2()  // nil 10
