@@ -89,3 +89,32 @@ x_2 = nil
 y_2.value = 10
 
 closure_2()  // nil 10
+
+///직득목록을 통한 클로저의 강한참조 순환 문제 해결
+class Person_2 {
+    let name: String
+    let hobby: String
+    
+    lazy var introduce: () -> String = { [unowned self] in
+        var introduction: String = "My name is \(self.name)."
+        
+        // Since hobby is not an optional, you can directly append it
+        introduction += " My hobby is \(self.hobby)."
+        
+        return introduction
+    }
+    
+    init(name: String, hobby: String) {
+        self.name = name
+        self.hobby = hobby
+    }
+    
+    deinit {
+        print("\(name) is being deinitialized")
+    }
+}
+
+var lucas_2: Person_2? = Person_2(name: "lucas_2", hobby: "eating")
+print(lucas_2?.introduce())         //My name is lucas_2. My hobby is eating.
+lucas_2 = nil         //lucas_2 is being deinitialized
+
