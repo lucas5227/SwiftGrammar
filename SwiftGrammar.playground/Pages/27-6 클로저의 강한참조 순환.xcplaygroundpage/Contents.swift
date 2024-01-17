@@ -118,3 +118,18 @@ var lucas_2: Person_2? = Person_2(name: "lucas_2", hobby: "eating")
 print(lucas_2?.introduce())         //My name is lucas_2. My hobby is eating.
 lucas_2 = nil         //lucas_2 is being deinitialized
 
+///획득목룩의 미소유 참조로 인한 차후 접근 문제 발생
+var lucas_3: Person_2? = Person_2(name: "lucas_3", hobby: "eating")
+var hana: Person_2? = Person_2(name: "hana", hobby: "playing guitar")
+
+//hana의 introduce 프로퍼티에 yagom의 introudce 프로퍼티 클로저의 참조 할딩
+hana?.introduce = lucas_3?.introduce ?? {" "}
+
+//아직 lucas가 참조하는 인스턴스가 해제되지 않았기 때문에
+//클로저 내부에서 self(lucas 변수가 참조하는 인스턴스) 참조 가능
+print(lucas_3?.introduce())         //My name is lucas_3. My hobby is eating.
+
+lucas_3 = nil           //lucas_3 is being deinitialized
+
+//print(hana?.introduce())             //err! 이미 메모리에서 해제된 인스턴스(lucas_3) 참조시도
+
