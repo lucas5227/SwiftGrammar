@@ -6,3 +6,8 @@
 """
 
 ///자판기 동작오류의 종류물 표현한 VendingMachineEror열거형
+enum VendingMachineError: Error {
+    case invalidSelection
+    case insufficientFunds(coinssNeeded: Int)
+    case outOfStock
+}
