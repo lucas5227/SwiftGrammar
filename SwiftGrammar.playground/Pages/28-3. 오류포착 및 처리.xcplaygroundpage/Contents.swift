@@ -17,3 +17,7 @@
  */
 
 ///자판기 동작 도중 발생한 오류 던지기
+struct Item {
+    var price: Int
+    var count: Int
+}
