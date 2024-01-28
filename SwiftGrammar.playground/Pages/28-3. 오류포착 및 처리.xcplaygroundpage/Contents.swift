@@ -28,4 +28,6 @@ class VendingMachine{
         "Chips": Item(price: 10, count: 4)
         "Biscuit": Item(price: 7, count: 1)
     ]
+    
+    var coinsDeposited = 0
 }
