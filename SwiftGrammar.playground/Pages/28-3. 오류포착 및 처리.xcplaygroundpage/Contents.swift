@@ -21,3 +21,11 @@ struct Item {
     var price: Int
     var count: Int
 }
+
+class VendingMachine{
+    var inventory = [
+        "Candy Bar": Item(price: 12, count: 7)
+        "Chips": Item(price: 10, count: 4)
+        "Biscuit": Item(price: 7, count: 1)
+    ]
+}
