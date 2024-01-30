@@ -30,4 +30,9 @@ class VendingMachine{
     ]
     
     var coinsDeposited = 0
+    
+    func dispense(snack: String) {
+        print("\(snack) 제공")
+        
+    }
 }
