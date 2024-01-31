@@ -17,6 +17,13 @@
  */
 
 ///자판기 동작 도중 발생한 오류 던지기
+
+enum VendingMachineError: Error {
+    case invalidSelection
+    case insufficientFunds(coinsNeeded: Int)
+    case outOfSrock
+}
+
 struct Item {
     var price: Int
     var count: Int
@@ -24,8 +31,8 @@ struct Item {
 
 class VendingMachine{
     var inventory = [
-        "Candy Bar": Item(price: 12, count: 7)
-        "Chips": Item(price: 10, count: 4)
+        "Candy Bar": Item(price: 12, count: 7),
+        "Chips": Item(price: 10, count: 4),
         "Biscuit": Item(price: 7, count: 1)
     ]
     
@@ -33,6 +40,56 @@ class VendingMachine{
     
     func dispense(snack: String) {
         print("\(snack) 제공")
+    }
+    
+    func vend(itemName name: String) throws {
+        guard let item = self.inventory[name] else {
+            throw VendingMachineError.invalidSelection
+        }
         
+        guard item.price <= self.coinsDeposited else {
+            throw VendingMachineError.insufficientFunds(
+                coinssNeeded: item.price - self.coinsDeposited)
+        }
+        
+        self.coinsDeposited -= item.price
+        
+        var newItem = item
+        newItem.count -= item.price
+        
+        var newItem = item
+        newItem.count -= item.price
+        
+        var newItem = item
+        newItem.count -= 1
+        self.inventory[name] = newItem
+        
+        self.dispense(snack: name)
     }
 }
+
+let favoriteSnacks = [
+    "lucas": "Chips",
+    "dohyun": "Biscuit",
+    "": "Chocolate",
+]
+
+func buyFavoriteSnack(poerson: String, vendingMachine: VendingMachine) throws {
+    let snackName = favoriteSnacks[poerson] ?? "Candy Bar"
+    try vendingMachine.vend(itemNamed: snackName)
+}
+
+struct PuchansedSnack {
+    let name: String
+    init(name: String, vendingMachine: VendingMachine) throws {
+        try vendingMachine.vend(itemNamed: name)
+        self.name = name
+    }
+}
+
+let machine: VendingMachine = VendingMachine()
+machine.coinsDeposited = 30
+
+var purchase: PurchasedSnack = try PurchasedSnack(name: "Biscuit",
+                                                  vendingMachine: machine)
+
