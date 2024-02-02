@@ -49,7 +49,7 @@ class VendingMachine{
         
         guard item.price <= self.coinsDeposited else {
             throw VendingMachineError.insufficientFunds(
-                coinssNeeded: item.price - self.coinsDeposited)
+                coinsNeeded: item.price - self.coinsDeposited)
         }
         
         self.coinsDeposited -= item.price
@@ -57,11 +57,6 @@ class VendingMachine{
         var newItem = item
         newItem.count -= item.price
         
-        var newItem = item
-        newItem.count -= item.price
-        
-        var newItem = item
-        newItem.count -= 1
         self.inventory[name] = newItem
         
         self.dispense(snack: name)
@@ -71,18 +66,18 @@ class VendingMachine{
 let favoriteSnacks = [
     "lucas": "Chips",
     "dohyun": "Biscuit",
-    "": "Chocolate",
+    "jinkyung": "Chocolate",
 ]
 
 func buyFavoriteSnack(poerson: String, vendingMachine: VendingMachine) throws {
     let snackName = favoriteSnacks[poerson] ?? "Candy Bar"
-    try vendingMachine.vend(itemNamed: snackName)
+    try vendingMachine.vend(itemName: snackName)
 }
 
-struct PuchansedSnack {
+struct PurchasedSnack {
     let name: String
     init(name: String, vendingMachine: VendingMachine) throws {
-        try vendingMachine.vend(itemNamed: name)
+        try vendingMachine.vend(itemName: name)
         self.name = name
     }
 }
@@ -92,4 +87,21 @@ machine.coinsDeposited = 30
 
 var purchase: PurchasedSnack = try PurchasedSnack(name: "Biscuit",
                                                   vendingMachine: machine)
+//Biscuit 제공
 
+print(purchase.name)            //Biscuit
+
+for (person, favoriteSnack) in favoriteSnacks {
+    print(person, favoriteSnack)
+    try buyFavoriteSnack(poerson: person, vendingMachine: machine)
+}
+
+//Biscuit 제공
+//Biscuit
+//dohyun Biscuit
+//Biscuit 제공
+//lucas Chips
+//Chips 제공
+//jinkyung Chocolat
+
+//err
