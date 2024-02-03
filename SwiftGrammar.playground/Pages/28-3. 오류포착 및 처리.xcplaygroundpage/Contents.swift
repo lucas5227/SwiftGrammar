@@ -105,3 +105,6 @@ for (person, favoriteSnack) in favoriteSnacks {
 //jinkyung Chocolat
 
 //err
+
+
+///28-3-2 do-catch구문을 이용하여 오류처리
