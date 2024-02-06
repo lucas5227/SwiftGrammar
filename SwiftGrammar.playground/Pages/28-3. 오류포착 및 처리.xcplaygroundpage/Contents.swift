@@ -121,4 +121,5 @@ for (person, favoriteSnack) in favoriteSnacks {
  }
  */
 
+/// do-catch 구문을 사용하여 던져진 오류 처리
 
