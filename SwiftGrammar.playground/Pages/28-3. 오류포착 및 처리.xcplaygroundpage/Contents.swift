@@ -126,3 +126,12 @@ func buyFavoriteSnack(person: String, vendingMachine: VendingMachine) {
     let snackName = favoriteSnacks[person] ?? "Candy Bar"
     tryingVend(itemNamed: snackName, vendingMachine: vendingMachine)
 }
+
+struct PuchasedSnack {
+    let name: String
+    init(name: String, vendingMachine: VendingMachine) {
+        tryingVend(itemNamed: name, vendingMachine: vendingMachine)
+        self.name = name
+    }
+}
+
