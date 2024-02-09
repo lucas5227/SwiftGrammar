@@ -135,3 +135,16 @@ struct PuchasedSnack {
     }
 }
 
+func tryingVend(itemName: String, vendingMachine: VendingMachine) {
+    do {
+        try vendingMachine.vend(itemNamed: itemName)
+    } catch VendingMachineError.invalidSelection {
+        print("유효하지 않은 선택")
+    } catch VendingMachineError.outOfSrock {
+        print("품절")
+    } catch VendingMachineError.insufficientFunds(coinsNeeded: let coinsNeeded) {
+        print("자금 부족 = 동전 \(coinsNeeded)개를 추가로 지급해주세요")
+    } catch {
+        print("그 외 오류 발생:", error)
+    }
+}
