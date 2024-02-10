@@ -42,7 +42,7 @@ class VendingMachine{
         print("\(snack) 제공")
     }
     
-    func vend(itemName name: String) throws {
+    func vend(itemNamed name: String) throws {
         guard let item = self.inventory[name] else {
             throw VendingMachineError.invalidSelection
         }
@@ -71,13 +71,13 @@ let favoriteSnacks = [
 
 func buyFavoriteSnack(poerson: String, vendingMachine: VendingMachine) throws {
     let snackName = favoriteSnacks[poerson] ?? "Candy Bar"
-    try vendingMachine.vend(itemName: snackName)
+    try vendingMachine.vend(itemNamed: snackName)
 }
 
 struct PurchasedSnack {
     let name: String
     init(name: String, vendingMachine: VendingMachine) throws {
-        try vendingMachine.vend(itemName: name)
+        try vendingMachine.vend(itemNamed: name)
         self.name = name
     }
 }
@@ -135,9 +135,9 @@ struct PuchasedSnack {
     }
 }
 
-func tryingVend(itemName: String, vendingMachine: VendingMachine) {
+func tryingVend(itemNamed: String, vendingMachine: VendingMachine) {
     do {
-        try vendingMachine.vend(itemNamed: itemName)
+        try vendingMachine.vend(itemNamed: itemNamed)
     } catch VendingMachineError.invalidSelection {
         print("유효하지 않은 선택")
     } catch VendingMachineError.outOfSrock {
@@ -148,3 +148,11 @@ func tryingVend(itemName: String, vendingMachine: VendingMachine) {
         print("그 외 오류 발생:", error)
     }
 }
+
+let machine_2: VendingMachine = VendingMachine()
+machine.coinsDeposited = 20
+
+var purchase_2: PuchasedSnack = PuchasedSnack(name: "Biscuit", vendingMachine: machine)
+//Biscuit 제공
+
+
