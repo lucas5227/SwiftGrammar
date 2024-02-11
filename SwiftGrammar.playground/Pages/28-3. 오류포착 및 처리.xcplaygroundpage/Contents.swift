@@ -150,9 +150,25 @@ func tryingVend(itemNamed: String, vendingMachine: VendingMachine) {
 }
 
 let machine_2: VendingMachine = VendingMachine()
-machine.coinsDeposited = 20
+machine_2.coinsDeposited = 20
 
 var purchase_2: PuchasedSnack = PuchasedSnack(name: "Biscuit", vendingMachine: machine)
 //Biscuit 제공
 
+print(purchase_2.name)            //Biscuit
 
+purchase_2 = PuchasedSnack(name: "Ice Cream", vendingMachine: machine_2)
+//유효하지 않은 선택
+
+print(purchase_2.name)          //Ice Cream
+
+for (person, favoriteSnack) in favoriteSnacks {
+    print(person, favoriteSnack)
+    try buyFavoriteSnack(person: person, vendingMachine: machine_2)
+}
+//lucas Chips
+//Chips 제공
+//dohyun Biscuit
+//자금 부족 - 동전 4개를 추가로 지급해주세요.
+//jinkyung Chocolate
+//유효하지않은 선택
