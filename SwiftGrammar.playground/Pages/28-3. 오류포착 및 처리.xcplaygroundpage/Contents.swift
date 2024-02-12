@@ -172,3 +172,7 @@ for (person, favoriteSnack) in favoriteSnacks {
 //자금 부족 - 동전 4개를 추가로 지급해주세요.
 //jinkyung Chocolate
 //유효하지않은 선택
+
+///28-3-3 옵셔널값으로 오류처리
+///옵셔널값으로 오류처리
+
