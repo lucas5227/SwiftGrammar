@@ -175,4 +175,14 @@ for (person, favoriteSnack) in favoriteSnacks {
 
 ///28-3-3 옵셔널값으로 오류처리
 ///옵셔널값으로 오류처리
-
+func someThrowingFunction(shouldThrowError: Bool) throws -> Int {
+    if shouldThrowError {
+        enum SomeError: Error {
+            case justSomeError
+        }
+        
+        throw SomeError.justSomeError
+    }
+    
+    return 100
+}
