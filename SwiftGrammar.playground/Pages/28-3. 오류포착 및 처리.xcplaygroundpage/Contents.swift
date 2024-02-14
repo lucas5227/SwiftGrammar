@@ -186,3 +186,9 @@ func someThrowingFunction(shouldThrowError: Bool) throws -> Int {
     
     return 100
 }
+
+let x: Optional = try? someThrowingFunction(shouldThrowError: true)
+print(x)            //nil
+
+let y: Optional = try? someThrowingFunction(shouldThrowError: false)
+print(y)            //Optional(100)
