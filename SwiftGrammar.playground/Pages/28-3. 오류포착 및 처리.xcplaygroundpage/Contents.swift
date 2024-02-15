@@ -192,3 +192,5 @@ print(x)            //nil
 
 let y: Optional = try? someThrowingFunction(shouldThrowError: false)
 print(y)            //Optional(100)
+
+///옵셔널 값으로 오류를 처리하는 방법과 기존 옵셔널 반환 타입과의 결합
