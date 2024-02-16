@@ -194,3 +194,29 @@ let y: Optional = try? someThrowingFunction(shouldThrowError: false)
 print(y)            //Optional(100)
 
 ///옵셔널 값으로 오류를 처리하는 방법과 기존 옵셔널 반환 타입과의 결합
+func fetchData() -> Data? {
+    if let data = try? fetchDataFromDisk() {
+        return data
+    }
+    if let data = try? fetchDataFromServer() {
+        return data
+    }
+    return nil
+}
+//--------//
+class Data {}
+func fetchDataFromDisk() throws -> Data {
+    // For example:
+    // return someData
+    throw NSError(domain: "DiskError", code: 1, userInfo: nil) // throw an error for demonstration
+}
+
+func fetchDataFromServer() throws -> Data {
+    // Implement logic to fetch data from server
+    // For example:
+    // return someData
+    throw NSError(domain: "ServerError", code: 1, userInfo: nil) // throw an error for demonstration
+}
+
+//--------//
+
