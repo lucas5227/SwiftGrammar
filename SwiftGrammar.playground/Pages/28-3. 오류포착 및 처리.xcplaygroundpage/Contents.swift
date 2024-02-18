@@ -217,6 +217,7 @@ func fetchDataFromServer() throws -> Data {
     // return someData
     throw NSError(domain: "ServerError", code: 1, userInfo: nil) // throw an error for demonstration
 }
-
+ 
+//--------//
 //--------//
 
