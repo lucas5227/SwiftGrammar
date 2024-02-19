@@ -220,4 +220,5 @@ func fetchDataFromServer() throws -> Data {
  
 //--------//
 
+///28-3-4 오류가 발생하지 않을 것이라고 확신하는 방법
 
