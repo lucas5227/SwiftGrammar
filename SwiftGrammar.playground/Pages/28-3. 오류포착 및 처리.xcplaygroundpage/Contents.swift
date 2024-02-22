@@ -233,4 +233,6 @@ func someThrowingFunction(shouldThrowError: Bool) throws -> Int {
     return 100
 }
     
+let t: int = try! someThrowingFunction(shouldThrowError: false)
+print(y)            //100
 
