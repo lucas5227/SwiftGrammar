@@ -236,3 +236,4 @@ func someThrowingFunction(shouldThrowError: Bool) throws -> Int {
 let t: int = try! someThrowingFunction(shouldThrowError: false)
 print(y)            //100
 
+//let x: Int = try! someThrowingFunction(shouldThrowError: true)          //err: RUNTIME
