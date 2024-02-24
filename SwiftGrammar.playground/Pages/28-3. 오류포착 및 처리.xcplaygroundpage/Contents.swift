@@ -222,7 +222,7 @@ func fetchDataFromServer() throws -> Data {
 
 ///28-3-4 오류가 발생하지 않을 것이라고 확신하는 방법
 ///오류가 발생하지 않음을 확신하여 오류처리
-func someThrowingFunction(shouldThrowError: Bool) throws -> Int {
+func someThrowingFunction_2(shouldThrowError: Bool) throws -> Int {
     if shouldThrowError {
         enum SomeError: Error {
             case justSomeError
@@ -233,7 +233,7 @@ func someThrowingFunction(shouldThrowError: Bool) throws -> Int {
     return 100
 }
     
-let t: int = try! someThrowingFunction(shouldThrowError: false)
+let y: Int = try! someThrowingFunction_2(shouldThrowError: false)
 print(y)            //100
 
-//let x: Int = try! someThrowingFunction(shouldThrowError: true)          //err: RUNTIME
+//let x: Int = try! someThrowingFunction_2(shouldThrowError: true)          //err: RUNTIME
