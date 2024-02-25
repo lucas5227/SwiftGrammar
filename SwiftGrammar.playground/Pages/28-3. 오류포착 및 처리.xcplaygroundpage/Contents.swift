@@ -237,3 +237,6 @@ let y: Int = try! someThrowingFunction_2(shouldThrowError: false)
 print(y)            //100
 
 //let x: Int = try! someThrowingFunction_2(shouldThrowError: true)          //err: RUNTIME
+
+
+///28-3-5 다시 던지기
