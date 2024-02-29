@@ -246,3 +246,12 @@ print(y)            //100
 
 ///오류의 다시던지기
 //오류를 던지는 함수
+func someThrowFunction_3() throws {
+    enum SomeError: Error {
+        case justSomeError
+    }
+    
+    throw SomeError.justSomeError
+}
+
+//다시 던지기 함수
