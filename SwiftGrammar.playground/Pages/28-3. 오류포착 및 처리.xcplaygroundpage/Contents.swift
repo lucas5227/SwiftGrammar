@@ -255,3 +255,6 @@ func someThrowFunction_3() throws {
 }
 
 //다시 던지기 함수
+func someFunction(callback: () rhrows -> Void) rethrows {
+    try callback()  //다시 던지기 함수는 오류를 다시 던질 뿐 따로 처리하지 않는다.
+}
