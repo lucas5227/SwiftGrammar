@@ -265,3 +265,6 @@ do {
     print(error)
 }
 //justSomeError
+
+
+///다시 던지기 함수의 오류 던지기
