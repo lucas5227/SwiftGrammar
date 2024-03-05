@@ -287,7 +287,7 @@ func someFunction_2(callback: () throws -> Void) rethrows {
 do {
     //매개변수로 전달한 오류 던지기 함수이므로
     //catch 절에서 제어할 수 있다.
-    try cal;back()
+    try callback()
 } catch {
     throw AnotherError.justAnotherError
 }
@@ -297,10 +297,13 @@ do {
     //catch 절에서 제어할 수 없다.
     try someThrowFunction_3()
 } catch {
-    //오류 발생!
-    throw AnotherError.justAnotherError
+    //err!
+//    throw AnotherError.justAnotherError
 }
 
 //catch 절 외부에서 단독으로 오류를 던질 수는 없다. err!
-throw Another.justAnotherError
+//throw Another.justAnotherError
 }
+
+
+
