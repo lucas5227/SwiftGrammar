@@ -245,6 +245,9 @@ print(y)            //100
  */
 
 ///오류의 다시던지기
+/*
+ 부모 클래스의 다시 던지기 메서드(rethrows메서드)는 자식 클래스에서 던지기 메서드(throws메서드)로 재정의할 수 없다. 그러나 부모 클래스의 던지기 대서드는 자식 클래스에서 다시 던지기 메서드로 재정의 할 수 있다.
+ */
 //오류를 던지는 함수
 func someThrowFunction_3() throws {
     enum SomeError: Error {
@@ -305,5 +308,31 @@ do {
 //throw Another.justAnotherError
 }
 
+///프로토콜과상속에서던지기함수와다시던지기함수
+protocol SomeProtocol {
+    func someThrowFunctionFromProtocol(callback: () throws -> Void) throws
+    func someRethrowFunctionFromProtocol(callback: () throws -> Void) rethrows
+}
 
+class SomeClass: SomeProtocol {
+    func someThrowingFunction(callback: () throws -> Void) throws { }
+    func someFunction(callback: () -> throws -> Void) rethrows { }
+    
+    //던지기 메서드는 다시 던지기 메서드를 요구하는 프로토콜을 충독할 수 없다.
+    //err!
+//    func someRethrowFunctionFromProtocol(callback: () throws -> Void) rethrows {
+//    }
+    
+    //다시 던지기 메서드는 더지기 메서드를 요구하는 프로토콜의 요구사항에 부한한다.
+    func someThrowFunctionFromProtocol(callback: () throws -> Void) throws {
+    }
+}
 
+class someChildClass: SomeClass {
+    //부모클래스의 던지기 메서드는 자식클래스에서 다시 던지기 메서드로 재정의할 수 있다.
+    override func someThrowingFunction(callback: () throws -> Void) throws { }
+    
+    //부모클래스의 다시 던지기 메서드는 자식클래스에서 던지기 메서드로 재정의할 수 없다.
+    //err!
+//    override func someFunction(callback: () -> Void) rethrows { }
+}
