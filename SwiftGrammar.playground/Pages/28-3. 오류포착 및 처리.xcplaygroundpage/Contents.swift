@@ -336,3 +336,6 @@ class someChildClass: SomeClass {
     //err!
 //    override func someFunction(callback: () -> Void) rethrows { }
 }
+
+///28-3-6 후처리 defer
+
