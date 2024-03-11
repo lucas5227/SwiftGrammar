@@ -345,3 +345,20 @@ class someChildClass: SomeClass {
  defer 구문은 꼭 오류처리 상황에서만 사용해야 하는 것은 아니지만, 오류처리를 할 때 유용하게 쓰이기에 오류처리 파트에서 소개한다. deger 구문은 오류처리 상황뿐만 아니라 함수, 메서드, 반복문, 조건문 등등 보통의 고드 블록 어디에서든 사용할 수 있다.
  */
 
+for i in 0...2 {
+    defer {
+        print("A", terminator: " ")
+    }
+    print(i, terminator: " ")
+    
+    if i % 2 == 0 {
+        defer {
+            print("", terminator: "\n")
+        }
+        
+        print("It's even", terminator: " ")
+    }
+    // 0 It's even
+    // A 1 A 2 It's even
+    // A
+}
