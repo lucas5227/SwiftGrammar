@@ -406,3 +406,44 @@ func writeData() {
     
 }
 */
+//파일쓰기 예재에서 defer 구문이 없다면
+/*
+func writeData() {
+    let file = openFile()
+    
+    if ... {
+        closeFile(file)
+        return
+    }
+    
+    if ... {
+        closeFile(file)
+        return
+    }
+    
+    closeFile(file)
+    //처리 끝
+}
+ */
+
+///defer구문의 실행순서
+/*
+defer구문은 현재 코드 범위를 벗어나기 전까지 실행을 미루고 있다가 프로그램 실행을 미루고 있다가 프로그램 실행 흐름이 코드 범위를 벗어나기 직전 실행된다. defer구문 내부에는 break, return 등과 같이 구분을 빠져나갈 수 있는 코드 또는 오류를 던지는 코드는 작성하면 안된다. 여러개의 defer구문이 하나의 범위(블록) 내부에 속해 있다면 맨 마지막에 작성된 구문부터 역순으로 실행된다.
+*/
+func someThrowingFuction(shou l xdThrowError: Bool) throws -> Int {
+    defer {
+        print("First")
+    }
+    
+    if shouldThrowError {
+        enum SomeError: Error {
+            case justSomeError
+        }
+        
+        throw SomeError.justSomeError
+    }
+    
+    defer {
+        print("Second")
+    }
+} 
