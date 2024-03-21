@@ -446,4 +446,20 @@ func someThrowingFuction(shou l xdThrowError: Bool) throws -> Int {
     defer {
         print("Second")
     }
+    
+    defer {
+        print("Third")
+    }
+    
+    return 100
 } 
+
+try? someThrowingFunction(shouldThrowError: true)
+//First
+//오류를 던지기 직전까지 작성된 defer 구문까지만 실행된다.
+
+try? someThrowingFunction(shouldThrowError: false)
+//Third
+//Second
+//First
+
